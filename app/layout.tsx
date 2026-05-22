@@ -28,6 +28,10 @@ export const metadata: Metadata = {
     "Garment label printing",
     "Rotary fabric labels",
   ],
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Velmurugan Labels | Premium Label Printing & Production",
     description:

@@ -247,42 +247,44 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="w-full aspect-[4/5] bg-white rounded-3xl p-4 shadow-xl border border-slate-100/50 flex flex-col justify-between relative group"
+                className="w-full aspect-[4/5] rounded-3xl p-6 shadow-2xl flex flex-col justify-between relative overflow-hidden group border border-slate-200/20"
               >
-                <div className="absolute inset-0 bg-gradient-to-tr from-sky-50 to-indigo-50/30 rounded-3xl -z-10 opacity-70 group-hover:scale-[1.01] transition-transform duration-300" />
-                
+                {/* Background Image Layer */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 -z-20"
+                  style={{ backgroundImage: "url('/home-hero.png')" }}
+                />
+                {/* Rich Slate Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/30 to-slate-950/80 -z-10" />
+
                 {/* Visual mock elements */}
-                <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                <div className="flex justify-between items-center bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20">
                   <div className="flex gap-2.5 items-center">
-                    <div className="w-8 h-8 rounded bg-sky-100 flex items-center justify-center text-sky-600">
+                    <div className="w-8 h-8 rounded bg-sky-500/20 backdrop-blur-sm flex items-center justify-center text-sky-400">
                       <Printer size={16} />
                     </div>
                     <div>
-                      <span className="block text-xs font-bold text-slate-800">HP Indigo 6K</span>
-                      <span className="block text-[10px] text-slate-500 font-semibold uppercase tracking-wider">Line Active</span>
+                      <span className="block text-xs font-bold text-white">HP Indigo 6K</span>
+                      <span className="block text-[10px] text-sky-300 font-bold uppercase tracking-wider">Line Active</span>
                     </div>
                   </div>
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
                 </div>
 
-                <div className="my-auto py-10 flex flex-col items-center justify-center text-center">
-                  <svg className="w-44 h-44 text-slate-200" viewBox="0 0 100 100" fill="none">
-                    <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="3 3" />
-                    <circle cx="50" cy="50" r="35" stroke="#0ea5e9" strokeWidth="3" className="animate-spin" style={{ transformOrigin: "center", animationDuration: "12s" }} />
-                    <path d="M50 25 L50 75 M25 50 L75 50" stroke="#0ea5e9" strokeWidth="1" strokeDasharray="1 2" />
-                    <rect x="35" y="35" width="30" height="30" rx="4" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1.5" />
-                    <circle cx="50" cy="50" r="4" fill="#0ea5e9" />
-                  </svg>
-                  <span className="block text-sm font-bold text-slate-800 mt-4">Precision Manufacturing Standards</span>
-                  <span className="text-xs text-slate-500 mt-1">Zero-Alignment Registration Error</span>
+                <div className="my-auto py-10 flex flex-col items-center justify-center text-center relative z-10">
+                  <div className="w-20 h-20 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 flex items-center justify-center text-sky-400 mb-4 shadow-lg shadow-black/20 group-hover:scale-110 transition-transform duration-300">
+                    <Printer size={36} className="stroke-[1.5]" />
+                  </div>
+                  <span className="block text-base font-extrabold text-white">Precision Manufacturing Standards</span>
+                  <span className="text-xs text-slate-300 mt-1 font-medium">Zero-Alignment Registration Error</span>
                 </div>
 
-                <div className="bg-sky-900 text-white p-5 rounded-2xl flex justify-between items-center shadow-lg shadow-sky-950/10">
+                <div className="bg-sky-600/95 backdrop-blur-md text-white p-5 rounded-2xl flex justify-between items-center shadow-xl shadow-black/20 border border-sky-400/20 relative z-10">
                   <div>
-                    <span className="block text-[10px] font-bold tracking-widest text-sky-400 uppercase">Tiruppur Hub</span>
+                    <span className="block text-[10px] font-bold tracking-widest text-sky-200 uppercase">Tiruppur Hub</span>
                     <span className="block text-sm font-semibold mt-0.5">Velmurugan Labels Facility</span>
                   </div>
-                  <ArrowRight size={18} className="text-sky-300 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={18} className="text-sky-200 group-hover:translate-x-1 transition-transform" />
                 </div>
               </motion.div>
             </div>
