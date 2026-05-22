@@ -155,6 +155,17 @@ export default function Services() {
             const IconComp = srv.icon;
             const isEven = idx % 2 === 0;
 
+            // Map service ID to premium photorealistic images
+            const serviceImages: Record<string, string> = {
+              "designing": "/srv-designing.png",
+              "digital-printing": "/srv-digital.png",
+              "offset-printing": "/srv-offset.png",
+              "stickers": "/portfolio-sticker-vinyl.png",
+              "rotary-label-printing": "/portfolio-tag-satin.png",
+              "screen-printing": "/portfolio-tag-gold.png",
+            };
+            const srvImage = serviceImages[srv.id] || "/srv-designing.png";
+
             return (
               <motion.div
                 key={srv.id}
@@ -169,28 +180,30 @@ export default function Services() {
               >
                 {/* Visual Widget Column */}
                 <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"} relative`}>
-                  <div className="aspect-square w-full max-w-sm mx-auto bg-slate-50 border border-slate-100 rounded-3xl p-8 flex flex-col justify-between shadow-inner relative overflow-hidden group">
-                    {/* SVG abstract technical printing schematic illustration */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-50/50 to-indigo-50/20 opacity-70" />
-                    
-                    <div className="w-12 h-12 rounded-2xl bg-sky-600 text-white flex items-center justify-center shadow-md shadow-sky-200">
+                  <div className="aspect-square w-full max-w-sm mx-auto rounded-3xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-200/20">
+                    {/* Background Service Image with hover zoom */}
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 z-0"
+                      style={{ backgroundImage: `url('${srvImage}')` }}
+                    />
+                    {/* Dark gradient overlay for rich premium feel & readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/15 to-slate-950/75 z-10" />
+
+                    {/* Department Icon Badge with glassmorphism */}
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white flex items-center justify-center shadow-lg relative z-20 transition-transform duration-300 group-hover:scale-110">
                       <IconComp size={22} className="stroke-[2.5]" />
                     </div>
 
-                    <div className="my-auto text-center space-y-2 py-6 relative z-10">
-                      <svg className="w-24 h-24 mx-auto text-sky-200" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="2" strokeDasharray="3" />
-                        <circle cx="50" cy="50" r="28" stroke="#0ea5e9" strokeWidth="3" />
-                        <line x1="50" y1="2" x2="50" y2="98" stroke="#cbd5e1" strokeWidth="0.5" />
-                        <line x1="2" y1="50" x2="98" y2="50" stroke="#cbd5e1" strokeWidth="0.5" />
-                      </svg>
-                      <span className="block text-xs font-bold text-slate-800 uppercase tracking-widest">Department Active</span>
-                      <span className="text-[10px] text-slate-400 block font-semibold uppercase">Calibrated Daily</span>
+                    {/* Active Status Badge with premium soft blur styling */}
+                    <div className="my-auto text-center space-y-1.5 py-5 relative z-20 bg-slate-950/45 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg max-w-[200px] mx-auto w-full">
+                      <span className="block text-[10px] font-bold text-sky-300 uppercase tracking-widest">Department Active</span>
+                      <span className="text-[9px] text-slate-200 block font-bold uppercase tracking-wider">Calibrated Daily</span>
                     </div>
 
-                    <div className="p-4 bg-white border border-slate-100 rounded-2xl shadow-sm text-center relative z-10">
-                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Target Capacity</span>
-                      <span className="text-xs font-bold text-slate-800 mt-1 block">Full-Volume Production Ready</span>
+                    {/* Capacity Indicator Card */}
+                    <div className="p-4 bg-slate-900/95 backdrop-blur-md border border-slate-800 rounded-2xl shadow-xl text-center relative z-20">
+                      <span className="text-[9px] text-sky-400 font-bold uppercase tracking-wider block">Target Capacity</span>
+                      <span className="text-xs font-bold text-white mt-1 block">Full-Volume Production Ready</span>
                     </div>
                   </div>
                 </div>

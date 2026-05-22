@@ -156,10 +156,18 @@ export default function Home() {
   return (
     <div className="relative overflow-hidden bg-slate-50/50">
       
-      {/* 1. Hero Section */}
-      <section className="relative pt-20 pb-24 md:pt-32 md:pb-36 bg-gradient-to-b from-sky-50/70 via-white to-transparent overflow-hidden">
-        {/* Dynamic mesh background grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-70 -z-10" />
+      <section className="relative pt-20 pb-24 md:pt-32 md:pb-36 overflow-hidden isolate">
+        {/* Supporting premium background image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center -z-20 opacity-85 transition-all duration-700 ease-in-out"
+          style={{ backgroundImage: "url('/home-hero-bg.png')" }}
+        />
+        {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-50/10 via-white/40 to-white -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent -z-10" />
+
+        {/* Dynamic mesh background grid with matching soft slate rules */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-80 -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -247,12 +255,12 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="w-full aspect-[4/5] rounded-3xl p-6 shadow-2xl flex flex-col justify-between relative overflow-hidden group border border-slate-200/20"
+                className="w-full aspect-[4/5] rounded-3xl p-6 shadow-2xl flex flex-col justify-between relative overflow-hidden group border border-slate-200/20 isolate"
               >
                 {/* Background Image Layer */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 -z-20"
-                  style={{ backgroundImage: "url('/home-hero.png')" }}
+                  style={{ backgroundImage: "url('/srv-digital.png')" }}
                 />
                 {/* Rich Slate Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-950/30 to-slate-950/80 -z-10" />
@@ -310,7 +318,13 @@ export default function Home() {
       </section>
 
       {/* 3. Services Preview */}
-      <section className="py-20 bg-slate-50/50">
+      <section className="py-20 bg-gradient-to-b from-white via-slate-50/20 to-white relative overflow-hidden isolate border-b border-slate-100">
+        {/* Soft glowing ambient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-sky-100/35 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-50/40 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        {/* Fine grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-70 -z-10 pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <span className="text-xs font-bold text-sky-600 uppercase tracking-widest">
@@ -332,7 +346,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-slate-200/50 shadow-sm hover:shadow-md hover:border-sky-200/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex justify-between items-center mb-6">
@@ -362,7 +376,10 @@ export default function Home() {
       </section>
 
       {/* 4. Production Workflow Section */}
-      <section className="py-20 bg-white border-y border-slate-100">
+      <section className="py-20 bg-white relative overflow-hidden isolate border-b border-slate-100">
+        {/* Soft glowing ambient orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-50/50 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
             <span className="text-xs font-bold text-sky-600 uppercase tracking-widest">
@@ -381,7 +398,7 @@ export default function Home() {
             <div className="hidden lg:block absolute top-12 left-10 right-10 h-[1px] bg-slate-200 -z-10" />
 
             {workflowSteps.map((step, idx) => (
-              <div key={step.num} className="space-y-4 relative bg-white">
+              <div key={step.num} className="space-y-4 relative bg-white rounded-2xl p-4 border border-transparent hover:border-slate-100 hover:shadow-sm transition-all duration-300">
                 <div className="w-14 h-14 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 text-lg font-black shadow-sm mb-6">
                   {step.num}
                 </div>
@@ -394,7 +411,13 @@ export default function Home() {
       </section>
 
       {/* 5. Why Choose Us Grid */}
-      <section className="py-20 bg-slate-50/50">
+      <section className="py-20 bg-gradient-to-b from-white via-slate-50/20 to-white relative overflow-hidden isolate border-b border-slate-100">
+        {/* Soft glowing ambient orbs */}
+        <div className="absolute top-1/3 right-10 w-[500px] h-[500px] bg-sky-100/30 rounded-full blur-[120px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        {/* Fine grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-80 -z-10 pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
@@ -448,12 +471,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-md space-y-6">
-              <div className="flex justify-between items-center pb-4 border-b border-slate-100">
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-slate-200/60 shadow-lg shadow-slate-100/50 space-y-6 relative overflow-hidden group hover:border-sky-200/50 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="flex justify-between items-center pb-4 border-b border-slate-100 relative z-10">
                 <span className="text-sm font-bold text-slate-800">Real-Time Production Output</span>
                 <span className="text-xs font-semibold text-sky-600 bg-sky-50 px-2 py-0.5 rounded">Live Status</span>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-4 relative z-10">
                 <div>
                   <div className="flex justify-between text-xs font-bold text-slate-600 mb-1">
                     <span>Heidelberg Offset Line</span>
@@ -482,7 +506,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="pt-4 text-center border-t border-slate-100/50">
+              <div className="pt-4 text-center border-t border-slate-100/50 relative z-10">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                   Calibrated hourly by engineering leads
                 </span>
@@ -494,7 +518,10 @@ export default function Home() {
       </section>
 
       {/* 6. Testimonials Slider */}
-      <section className="py-20 bg-white border-y border-slate-100">
+      <section className="py-20 bg-white relative overflow-hidden isolate border-b border-slate-100">
+        {/* Soft glowing ambient orb */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-50/40 rounded-full blur-[130px] -z-10 pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <span className="text-xs font-bold text-sky-600 uppercase tracking-widest">
@@ -509,17 +536,17 @@ export default function Home() {
             {testimonials.map((t, idx) => (
               <div
                 key={t.name}
-                className="bg-slate-50 border border-slate-100 rounded-2xl p-6 relative flex flex-col justify-between"
+                className="bg-white/85 backdrop-blur-md border border-slate-200/50 rounded-2xl p-6 relative flex flex-col justify-between shadow-sm hover:shadow-md hover:border-sky-200/50 hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-600 font-bold shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-sky-50 flex items-center justify-center text-sky-600 font-extrabold shrink-0 border border-sky-100/50 transition-transform duration-300 group-hover:scale-105">
                     {t.name[0]}
                   </div>
                   <p className="text-sm text-slate-600 italic leading-relaxed">
                     &ldquo;{t.content}&rdquo;
                   </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-slate-200/50">
+                <div className="mt-6 pt-4 border-t border-slate-100">
                   <h4 className="text-sm font-bold text-slate-800">{t.name}</h4>
                   <span className="text-xs text-slate-400 block mt-0.5">{t.role}</span>
                 </div>
@@ -530,13 +557,20 @@ export default function Home() {
       </section>
 
       {/* 7. Contact / Quick Quote Section */}
-      <section id="quote-section" className="py-20 bg-slate-50/50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="quote-section" className="py-20 bg-gradient-to-b from-white via-slate-50/40 to-slate-100/30 relative overflow-hidden isolate border-t border-slate-100">
+        {/* Soft glowing ambient orbs */}
+        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-sky-100/25 rounded-full blur-[130px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[110px] -z-10 pointer-events-none" />
+        {/* Fine technical blueprint grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-85 -z-10 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
             
             {/* Form Side */}
-            <div className="lg:col-span-7 bg-white rounded-3xl p-8 border border-slate-100 shadow-md">
-              <div className="space-y-2 mb-8">
+            <div className="lg:col-span-7 bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-slate-200/50 shadow-xl shadow-slate-100/50 relative overflow-hidden group hover:border-sky-200/50 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="space-y-2 mb-8 relative z-10">
                 <span className="text-xs font-bold text-sky-600 uppercase tracking-widest block">
                   Quick Inquiry
                 </span>
@@ -548,7 +582,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">
@@ -560,7 +594,7 @@ export default function Home() {
                       placeholder="e.g. Sanjay Verma"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all"
                     />
                   </div>
                   <div>
@@ -573,7 +607,7 @@ export default function Home() {
                       placeholder="e.g. sanjay@company.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all"
                     />
                   </div>
                 </div>
@@ -589,7 +623,7 @@ export default function Home() {
                       placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all"
                     />
                   </div>
                   <div>
@@ -600,7 +634,7 @@ export default function Home() {
                       required
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all cursor-pointer"
                     >
                       <option value="">Select Service...</option>
                       <option value="Designing">Label Designing</option>
@@ -623,7 +657,7 @@ export default function Home() {
                     placeholder="Describe material type (Satin, adhesive, paper), sizes, and approximate quantities..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors resize-none"
+                    className="w-full bg-slate-50/50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-4 focus:ring-sky-500/10 transition-all resize-none"
                   />
                 </div>
 
@@ -655,7 +689,7 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 bg-sky-600 hover:bg-sky-700 disabled:bg-slate-300 font-semibold rounded-xl text-white text-sm uppercase tracking-wider shadow-md shadow-sky-100 hover:shadow-lg transition-all duration-200"
+                  className="w-full py-4 bg-sky-600 hover:bg-sky-700 disabled:bg-slate-300 font-semibold rounded-xl text-white text-sm uppercase tracking-wider shadow-lg shadow-sky-100 hover:shadow-xl hover:shadow-sky-200 hover:-translate-y-[1px] transition-all duration-200 cursor-pointer"
                 >
                   {loading ? "Transmitting Specs..." : "Request Call-Back"}
                 </button>
@@ -663,16 +697,17 @@ export default function Home() {
             </div>
 
             {/* Address & Direct Dial Side */}
-            <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+            <div className="lg:col-span-5 flex flex-col justify-between gap-6 relative">
               
               {/* Facility Card */}
-              <div className="bg-slate-900 text-white rounded-3xl p-8 space-y-6 flex-grow flex flex-col justify-center border border-slate-800 shadow-md">
-                <span className="text-[10px] font-bold tracking-widest text-sky-400 uppercase">
+              <div className="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-8 space-y-6 flex-grow flex flex-col justify-center border border-slate-800 shadow-xl shadow-slate-900/10 hover:border-slate-700 transition-all duration-300 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <span className="text-[10px] font-bold tracking-widest text-sky-400 uppercase relative z-10">
                   Our Headquarters
                 </span>
-                <h3 className="text-xl font-bold">Velmurugan Labels</h3>
+                <h3 className="text-xl font-bold relative z-10">Velmurugan Labels</h3>
                 
-                <ul className="space-y-4 text-slate-300 text-sm">
+                <ul className="space-y-4 text-slate-300 text-sm relative z-10">
                   <li className="flex gap-3 items-start">
                     <MapPin size={18} className="text-sky-400 shrink-0 mt-0.5" />
                     <span>
@@ -692,12 +727,12 @@ export default function Home() {
                   </li>
                 </ul>
 
-                <hr className="border-slate-800" />
+                <hr className="border-slate-800 relative z-10" />
 
-                <div className="flex gap-4">
+                <div className="flex gap-4 relative z-10">
                   <Link
                     href="/schedule-meeting"
-                    className="flex-grow py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs uppercase tracking-wider rounded-xl text-center border border-slate-700 transition-colors"
+                    className="flex-grow py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs uppercase tracking-wider rounded-xl text-center border border-slate-750 transition-colors"
                   >
                     Reserving slots
                   </Link>
@@ -713,7 +748,7 @@ export default function Home() {
               </div>
 
               {/* Google Map Mock Illustration */}
-              <div className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-md aspect-video relative flex items-center justify-center p-4">
+              <div className="bg-white/95 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200/50 shadow-lg shadow-slate-100/30 aspect-video relative flex items-center justify-center p-4 group hover:border-sky-200/50 transition-all duration-300">
                 <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" fill="none">
                   <path d="M 0 30 Q 50 10 100 30 M 0 60 Q 50 40 100 60 M 30 0 Q 10 50 30 100 M 60 0 Q 40 50 60 100" stroke="#0ea5e9" strokeWidth="2" />
                 </svg>

@@ -12,36 +12,42 @@ const services = [
     description: "Creative high-resolution custom label & branding layout development.",
     href: "/services#designing",
     icon: Compass,
+    image: "/srv-designing.png",
   },
   {
     name: "Digital Printing",
     description: "Variable data & short-run labels with stunning photographic quality.",
     href: "/services#digital-printing",
     icon: Printer,
+    image: "/srv-digital.png",
   },
   {
     name: "Offset Printing",
     description: "High-volume precision sheetfed printing for tags & packaging cards.",
     href: "/services#offset-printing",
     icon: Layers,
+    image: "/srv-offset.png",
   },
   {
     name: "Stickers",
     description: "Custom self-adhesive stickers, die-cut decals & barcode roll labels.",
     href: "/services#stickers",
     icon: Settings,
+    image: "/portfolio-sticker-vinyl.png",
   },
   {
     name: "Rotary Label Printing",
     description: "Ultra high-speed roll labels & garment tags on premium fabrics.",
     href: "/services#rotary-label-printing",
     icon: BarChart,
+    image: "/portfolio-tag-satin.png",
   },
   {
     name: "Screen Printing",
     description: "Spot UV, high-build texture, metallic inks & premium gloss finishes.",
     href: "/services#screen-printing",
     icon: Printer,
+    image: "/portfolio-tag-gold.png",
   },
 ];
 
@@ -164,7 +170,7 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute left-1/2 -translate-x-1/2 mt-2 w-[550px] bg-white border border-slate-100 rounded-2xl shadow-xl p-6 grid grid-cols-2 gap-4 z-50"
+                        className="absolute left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white border border-slate-100 rounded-2xl shadow-xl p-6 grid grid-cols-2 gap-4 z-50"
                       >
                         {services.map((srv) => {
                           const IconComp = srv.icon;
@@ -172,16 +178,25 @@ export default function Navbar() {
                             <Link
                               key={srv.name}
                               href={srv.href}
-                              className="flex gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors duration-200 group/item"
+                              className="flex gap-4 p-3 rounded-2xl hover:bg-slate-50 transition-all duration-200 group/item border border-transparent hover:border-slate-100 hover:shadow-sm"
                             >
-                              <div className="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center text-sky-600 group-hover/item:bg-sky-600 group-hover/item:text-white transition-colors duration-200 shrink-0">
-                                <IconComp size={18} />
+                              {/* Service Thumbnail Image */}
+                              <div className="w-16 h-16 rounded-xl overflow-hidden relative border border-slate-100 shadow-sm shrink-0 bg-slate-50">
+                                <img 
+                                  src={srv.image} 
+                                  alt={srv.name} 
+                                  className="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-350 ease-out" 
+                                />
+                                {/* Overlay floating micro-badge icon */}
+                                <div className="absolute bottom-1 right-1 w-5 h-5 rounded-md bg-white/95 backdrop-blur-sm border border-slate-100 flex items-center justify-center text-sky-600 shadow-sm transition-transform duration-300 group-hover/item:rotate-12">
+                                  <IconComp size={10} className="stroke-[2.5]" />
+                                </div>
                               </div>
-                              <div>
-                                <h4 className="text-sm font-semibold text-slate-800 group-hover/item:text-sky-600 transition-colors duration-200">
+                              <div className="flex flex-col justify-center">
+                                <h4 className="text-xs sm:text-sm font-bold text-slate-800 group-hover/item:text-sky-600 transition-colors duration-200 leading-snug">
                                   {srv.name}
                                 </h4>
-                                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                                <p className="text-[11px] text-slate-500 mt-1 leading-normal">
                                   {srv.description}
                                 </p>
                               </div>

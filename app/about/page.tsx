@@ -12,6 +12,11 @@ import {
   Eye,
   CheckCircle2,
   Sparkles,
+  Play,
+  Cpu,
+  Settings,
+  Activity,
+  Video,
 } from "lucide-react";
 
 const coreValues = [
@@ -95,17 +100,24 @@ const indianReviews = [
 
 export default function About() {
   return (
-    <div className="relative bg-slate-50/50 min-h-screen">
+    <div className="relative bg-slate-50/50 min-h-screen overflow-hidden isolate">
+      {/* Premium glowing ambient orbs */}
+      <div className="absolute top-1/4 left-[10%] w-[500px] h-[500px] bg-sky-100/20 rounded-full blur-[130px] -z-10 pointer-events-none" />
+      <div className="absolute top-2/4 right-[10%] w-[450px] h-[450px] bg-indigo-50/30 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-sky-50/30 rounded-full blur-[140px] -z-10 pointer-events-none" />
+      
+      {/* Fine technical blueprint grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_80%,transparent_100%)] opacity-60 -z-10 pointer-events-none" />
       
       {/* 1. Page Hero */}
-      <section className="relative py-24 bg-slate-900 overflow-hidden border-b border-slate-800 text-center">
-        {/* Background Image Layer */}
+      <section className="relative py-28 bg-slate-950 overflow-hidden border-b border-slate-800 text-center">
+        {/* Background Image Layer - Upgraded to real high-fidelity factory photo */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
-          style={{ backgroundImage: "url('/about-hero.png')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity scale-105 transition-all duration-1000"
+          style={{ backgroundImage: "url('/v8.jpeg')" }}
         />
         {/* Sky-Blue Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/80 to-slate-950 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-900/80 to-slate-950 z-0" />
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-bold text-sky-400 uppercase tracking-widest">
@@ -125,12 +137,12 @@ export default function About() {
       </section>
 
       {/* 2. Mission & Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100/50 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600">
+            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-slate-200/50 shadow-md shadow-slate-100/30 space-y-4 hover:border-sky-200/50 transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100/50 flex items-center justify-center text-sky-600 transition-transform group-hover:scale-105">
                 <Target size={24} />
               </div>
               <h3 className="text-xl font-bold text-slate-800">Our Strategic Vision</h3>
@@ -139,8 +151,8 @@ export default function About() {
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100/50 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center text-sky-600">
+            <div className="bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-slate-200/50 shadow-md shadow-slate-100/30 space-y-4 hover:border-sky-200/50 transition-all duration-300 group">
+              <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100/50 flex items-center justify-center text-sky-600 transition-transform group-hover:scale-105">
                 <Eye size={24} />
               </div>
               <h3 className="text-xl font-bold text-slate-800">Our Everyday Mission</h3>
@@ -154,7 +166,7 @@ export default function About() {
       </section>
 
       {/* 3. Core Values */}
-      <section className="py-20 bg-slate-50/50 border-y border-slate-100">
+      <section className="py-20 bg-transparent relative z-10 border-y border-slate-200/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <span className="text-xs font-bold text-sky-600 uppercase tracking-widest">
@@ -171,9 +183,9 @@ export default function About() {
               return (
                 <div
                   key={value.title}
-                  className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm space-y-4 hover:shadow-md transition-shadow"
+                  className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-slate-200/50 shadow-sm space-y-4 hover:shadow-md hover:border-sky-200/50 hover:-translate-y-1 transition-all duration-300 group"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-600">
+                  <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100/50 flex items-center justify-center text-sky-600 transition-transform duration-300 group-hover:scale-105">
                     <IconComp size={20} />
                   </div>
                   <h3 className="text-sm font-bold text-slate-800">{value.title}</h3>
@@ -223,26 +235,350 @@ export default function About() {
               </div>
             </div>
 
-            <div className="lg:col-span-6 grid grid-cols-2 gap-6">
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center space-y-2">
-                <Award size={32} className="text-sky-600 mx-auto" />
-                <span className="block text-xs font-bold text-slate-800">ISO 9001</span>
-                <span className="text-[10px] text-slate-400 block font-semibold uppercase">Calibrated Facility</span>
+            <div className="lg:col-span-6 space-y-6">
+              {/* Photo Frame showing the real facility floor */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/60 bg-slate-900 group">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60 z-10" />
+                
+                {/* Tech Badge overlay */}
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[10px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Continuous Facility Operations
+                </div>
+                
+                {/* Large high-fidelity photo */}
+                <img 
+                  src="/v8.jpeg" 
+                  alt="Velmurugan Labels Factory Floor Overview" 
+                  className="w-full aspect-[16/10] object-cover object-center group-hover:scale-105 transition-all duration-700"
+                />
+                
+                {/* Description card at the bottom */}
+                <div className="absolute bottom-0 inset-x-0 p-6 z-20 text-left">
+                  <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest block mb-1">
+                    Tiruppur Manufacturing Hub
+                  </span>
+                  <h4 className="text-base font-extrabold text-white">
+                    Velmurugan Labels Production Facility
+                  </h4>
+                  <p className="text-xs text-slate-300 mt-1 line-clamp-2">
+                    Equipped with advanced sheetfed offset, digital press lines, and rotary print systems operating under rigorous ISO guidelines.
+                  </p>
+                </div>
               </div>
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center space-y-2">
-                <ShieldCheck size={32} className="text-sky-600 mx-auto" />
-                <span className="block text-xs font-bold text-slate-800">OEKO-TEX</span>
-                <span className="text-[10px] text-slate-400 block font-semibold uppercase">Apparel Certified</span>
+
+              {/* Sub-grid of performance parameters */}
+              <div className="grid grid-cols-2 gap-4 text-left">
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:bg-sky-50/10 transition-all duration-300 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                    <Award size={16} />
+                  </div>
+                  <div>
+                    <span className="block text-xs font-bold text-slate-800">ISO 9001:2015</span>
+                    <span className="text-[10px] text-slate-500 font-medium">Calibrated Facility Standards</span>
+                  </div>
+                </div>
+                
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:bg-sky-50/10 transition-all duration-300 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                    <ShieldCheck size={16} />
+                  </div>
+                  <div>
+                    <span className="block text-xs font-bold text-slate-800">OEKO-TEX 100</span>
+                    <span className="text-[10px] text-slate-500 font-medium">Apparel Safe Print Inputs</span>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:bg-sky-50/10 transition-all duration-300 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                    <TrendingUp size={16} />
+                  </div>
+                  <div>
+                    <span className="block text-xs font-bold text-slate-800">Zero-Defect</span>
+                    <span className="text-[10px] text-slate-500 font-medium">Precise Registration Ratio</span>
+                  </div>
+                </div>
+
+                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:bg-sky-50/10 transition-all duration-300 flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                    <Users size={16} />
+                  </div>
+                  <div>
+                    <span className="block text-xs font-bold text-slate-800">24/7 Production</span>
+                    <span className="text-[10px] text-slate-500 font-medium">Continuous Rotational Shifts</span>
+                  </div>
+                </div>
               </div>
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center space-y-2">
-                <TrendingUp size={32} className="text-sky-600 mx-auto" />
-                <span className="block text-xs font-bold text-slate-800">Zero Defect</span>
-                <span className="text-[10px] text-slate-400 block font-semibold uppercase">Registration Ratio</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4.5. Factory Floor Live Operations Showcase */}
+      <section className="py-20 bg-slate-50/50 border-t border-slate-200/30 relative overflow-hidden">
+        {/* Glow */}
+        <div className="absolute top-1/2 right-[10%] w-[350px] h-[350px] bg-sky-100/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          
+          {/* Header Title with Live Pulse */}
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-bold text-sky-600 uppercase tracking-widest">
+              <Activity size={12} className="text-sky-500 animate-pulse" />
+              Live Operations Feed
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Factory Floor Live Operations Showcase
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Explore authentic high-definition video loops captured directly from our primary printing machinery departments in Tiruppur. 100% genuine footage highlighting our modern technology pipeline.
+            </p>
+          </div>
+
+          {/* Featured Widescreen Showcase - Video 1 */}
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-slate-200/60 shadow-xl overflow-hidden hover:border-sky-200/50 transition-all duration-300">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+              {/* Video Player */}
+              <div className="lg:col-span-7 relative bg-slate-950 aspect-video lg:aspect-auto min-h-[300px] lg:min-h-[420px] flex items-center justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200/50">
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[10px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Featured Line Feed
+                </div>
+                <video 
+                  className="w-full h-full object-cover"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v1.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center space-y-2">
-                <Users size={32} className="text-sky-600 mx-auto" />
-                <span className="block text-xs font-bold text-slate-800">24/7 Support</span>
-                <span className="text-[10px] text-slate-400 block font-semibold uppercase">Continuous Shifts</span>
+
+              {/* Text Spec Panel */}
+              <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between space-y-6 text-left">
+                <div className="space-y-4">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-sky-600 uppercase tracking-widest">
+                    <Cpu size={12} />
+                    Primary Press Sector
+                  </span>
+                  <h3 className="text-2xl font-black text-slate-800 tracking-tight leading-tight">
+                    High-Speed Rotary Apparel Care Tag Lines
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                    Our high-speed rotary printing system operates continuously to supply luxury garment care cards, woven tags, and double-sided self-adhesive labels for major clothing exporter hubs. Runs up to 120 meters per minute with precision registration control.
+                  </p>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
+                    Active Calibration Parameters
+                  </span>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
+                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Rated Speed</span>
+                      <span className="text-xs font-bold text-slate-700">120 m/min</span>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
+                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Material Input</span>
+                      <span className="text-xs font-bold text-slate-700">Satin / Woven</span>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
+                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Ink Quality</span>
+                      <span className="text-xs font-bold text-slate-700">OEKO-TEX Washproof</span>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
+                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Max Width</span>
+                      <span className="text-xs font-bold text-slate-700">220 mm Web</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Sub-grid of 6 specialized machines - Videos 2 to 7 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {/* Card 2 - Digital Press */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  VDP Print Run
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v2.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">HP Indigo Digital Press Line</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Variable Data Printing (VDP) enabling micro-variable barcodes, QR codes, and bespoke label designs without plates or startup times.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Digital Sticker Roll
+                </span>
+              </div>
+            </div>
+
+            {/* Card 3 - Die Cutting */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  Kiss-Cutting
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v3.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">Precision Rotary Die-Cutting</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Integrated rotary magnetic cylinder tools executing perfect kiss-cutting and continuous waste matrix stripping on adhesive stickers.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Continuous Matrix Stripping
+                </span>
+              </div>
+            </div>
+
+            {/* Card 4 - Offset Packaging */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  Sheetfed Line
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v4.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">Sheetfed Offset Press Line</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Heavy-duty, high-performance offset press folding and forming luxury duplex card boxes, cosmetics packages, and hang tags.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Paperboard Carton Press
+                </span>
+              </div>
+            </div>
+
+            {/* Card 5 - Thermal Rewinder */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  Slit & Rewind
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v5.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">Thermal Barcode Roll Slitting</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Automated high-speed slitting, rewinding, and core tensioning of blank thermal barcode rolls used in retail shipping systems.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Logistics Barcodes
+                </span>
+              </div>
+            </div>
+
+            {/* Card 6 - Spot UV Varnishing */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  High-Build Gloss
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v6.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">Spot UV & Screen Varnishing</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    Applying premium tactile high-build spot gloss varnishes and matte textured screens over high-end apparel card inserts and cosmetic cartons.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Luxury Finishes
+                </span>
+              </div>
+            </div>
+
+            {/* Card 7 - QA Optical Inspection */}
+            <div className="bg-white/80 backdrop-blur-md rounded-2xl border border-slate-200/50 hover:border-sky-200/50 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group text-left">
+              <div className="relative aspect-[16/10] bg-slate-900 overflow-hidden border-b border-slate-100">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
+                  <span className="w-1 h-1 rounded-full bg-emerald-50 animate-pulse" />
+                  QA Camera Check
+                </div>
+                <video 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                >
+                  <source src="/v7.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-bold text-slate-800">100% Quality Inspection Line</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    High-resolution linear sensor cameras performing optical character verification (OCV) and micro-defect detection in active slitting operations.
+                  </p>
+                </div>
+                <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
+                  Zero Defects
+                </span>
               </div>
             </div>
 
