@@ -61,7 +61,7 @@ const milestones = [
   {
     year: "2024",
     title: "Digital Press & Expansion",
-    desc: "Acquired advanced digital printing systems (HP Indigo) to provide variable data printing with zero setup times.",
+    desc: "Acquired advanced digital printing systems to provide variable data printing with zero setup times.",
   },
   {
     year: "2026",
@@ -421,7 +421,7 @@ export default function About() {
               </div>
               <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h4 className="text-sm font-bold text-slate-800">HP Indigo Digital Press Line</h4>
+                  <h4 className="text-sm font-bold text-slate-800">Advanced Digital Press Line</h4>
                   <p className="text-xs text-slate-500 leading-relaxed">
                     Variable Data Printing (VDP) enabling micro-variable barcodes, QR codes, and bespoke label designs without plates or startup times.
                   </p>

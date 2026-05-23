@@ -4,50 +4,57 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Printer, Layers, Compass, BarChart, Settings, Mail, Phone, Calendar, BookOpen, FileText, Sparkles, Lock } from "lucide-react";
+import { Menu, X, ChevronDown, Printer, Layers, Compass, BarChart, Settings, Mail, Phone, BookOpen, FileText, Sparkles, Lock, Shirt, Package } from "lucide-react";
 
 const services = [
   {
-    name: "Designing",
-    description: "Creative high-resolution custom label & branding layout development.",
-    href: "/services#designing",
+    name: "Custom Wash Care Printing",
+    description: "Wash care instructions printed to reflect absolute fabric details.",
+    href: "/services#wash-care",
+    icon: Printer,
+    image: "/srv-wash-care.png",
+  },
+  {
+    name: "Offset Printing Services",
+    description: "High-volume paper products, cardboard layouts & folding boxes.",
+    href: "/services#offset-printing",
+    icon: Layers,
+    image: "/srv-offset-services.png",
+  },
+  {
+    name: "Hang Tag & Price Tag",
+    description: "Stylish price cards & tags engineered with point-of-sale barcodes.",
+    href: "/services#hang-tag",
     icon: Compass,
     image: "/srv-designing.png",
   },
   {
-    name: "Digital Printing",
-    description: "Variable data & short-run labels with stunning photographic quality.",
-    href: "/services#digital-printing",
-    icon: Printer,
-    image: "/srv-digital.png",
+    name: "Woven Labels",
+    description: "Garment neck labels and woven brand badges woven from fine threads.",
+    href: "/services#woven-labels",
+    icon: Shirt,
+    image: "/srv-woven-labels.png",
   },
   {
-    name: "Offset Printing",
-    description: "High-volume precision sheetfed printing for tags & packaging cards.",
-    href: "/services#offset-printing",
-    icon: Layers,
-    image: "/srv-offset.png",
-  },
-  {
-    name: "Stickers",
-    description: "Custom self-adhesive stickers, die-cut decals & barcode roll labels.",
+    name: "Stickers & Die-Cuts (Dey Cut)",
+    description: "Self-adhesive stickers, thermal barcodes & custom die-cut labels.",
     href: "/services#stickers",
     icon: Settings,
     image: "/portfolio-sticker-vinyl.png",
   },
   {
-    name: "Rotary Label Printing",
-    description: "Ultra high-speed roll labels & garment tags on premium fabrics.",
-    href: "/services#rotary-label-printing",
-    icon: BarChart,
-    image: "/portfolio-tag-satin.png",
+    name: "Poly Cover Printing & Cutting",
+    description: "Custom printed transparent garment poly covers & eco-bio covers.",
+    href: "/services#poly-covers",
+    icon: Package,
+    image: "/srv-poly-covers.png",
   },
   {
-    name: "Screen Printing",
-    description: "Spot UV, high-build texture, metallic inks & premium gloss finishes.",
-    href: "/services#screen-printing",
-    icon: Printer,
-    image: "/portfolio-tag-gold.png",
+    name: "Label Cut & Seal",
+    description: "Automated ultrasonic clean ribbon trimming & frayed-edge sealing.",
+    href: "/services#cut-seal",
+    icon: Settings,
+    image: "/portfolio-tag-satin.png",
   },
 ];
 
@@ -65,7 +72,7 @@ const articles = [
     icon: FileText,
   },
   {
-    name: "HP Indigo Variable Data Scaling",
+    name: "Variable Data Label Scaling",
     description: "Driving retail logistics efficiency with sequential barcodes and fast digital press cycles.",
     href: "/#articles-variable-data",
     icon: BookOpen,
@@ -113,18 +120,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center gap-2 xl:gap-3 group shrink-0">
-            <div className="w-11 h-11 xl:w-14 xl:h-14 rounded-xl overflow-hidden flex items-center justify-center shadow-sm shadow-sky-100/50 group-hover:scale-105 transition-transform duration-200 bg-white border border-slate-100 p-0.5">
-              <img src="/logo.png" alt="Velmurugan Labels Logo" className="w-full h-full object-contain" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-base xl:text-xl tracking-tight text-slate-800 leading-tight">
-                VELMURUGAN
-              </span>
-              <span className="block text-[9px] xl:text-[11px] font-bold text-sky-600 tracking-widest uppercase leading-none mt-0.5">
-                LABELS
-              </span>
-            </div>
+          <Link href="/" className="flex items-center group shrink-0 relative py-1.5 px-3 bg-white/70 hover:bg-white rounded-2xl border border-slate-100/80 hover:border-sky-300/40 hover:shadow-lg hover:shadow-sky-100/30 transition-all duration-300">
+            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.01] transition-transform duration-200" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -290,13 +287,6 @@ export default function Navbar() {
               <Lock size={13} />
             </Link>
             <Link
-              href="/schedule-meeting"
-              className="flex items-center gap-1 text-[11px] xl:text-xs font-bold uppercase tracking-wider text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 px-3 py-2 xl:px-4.5 xl:py-2.5 rounded-full border border-slate-200 transition-all duration-200"
-            >
-              <Calendar size={13} />
-              Book Call
-            </Link>
-            <Link
               href="/contact"
               className="flex items-center gap-1 text-[11px] xl:text-xs font-bold uppercase tracking-wider text-white bg-sky-600 hover:bg-sky-700 px-3 py-2 xl:px-4.5 xl:py-2.5 rounded-full shadow-md shadow-sky-100 hover:shadow-lg hover:shadow-sky-200 hover:-translate-y-[0.5px] transition-all duration-200"
             >
@@ -396,13 +386,6 @@ export default function Navbar() {
                 >
                   <Lock size={15} />
                   Admin Dashboard
-                </Link>
-                <Link
-                  href="/schedule-meeting"
-                  className="w-full flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl font-semibold text-slate-700 text-sm hover:bg-slate-50 transition-colors"
-                >
-                  <Calendar size={16} />
-                  Schedule Meeting
                 </Link>
                 <Link
                   href="/contact"

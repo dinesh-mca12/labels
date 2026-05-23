@@ -22,7 +22,7 @@ const DEFAULT_MACHINES = [
     maintenanceSchedule: "Bi-weekly Service - Tuesday 10 PM",
   },
   {
-    name: "HP Indigo 6K Digital Press",
+    name: "Industrial Digital Printing Press",
     type: "Digital Printing",
     status: "Running Job",
     availability: 90,

@@ -9,18 +9,8 @@ export default function Footer() {
           
           {/* Company Info Column */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-14 h-14 rounded-xl overflow-hidden flex items-center justify-center shadow-md shadow-slate-950/20 bg-slate-800 border border-slate-700/50 p-0.5">
-                <img src="/logo.png" alt="Velmurugan Labels Logo" className="w-full h-full object-contain" />
-              </div>
-              <div>
-                <span className="font-extrabold text-xl tracking-tight text-white block">
-                  VELMURUGAN
-                </span>
-                <span className="block text-xs font-bold text-sky-400 tracking-widest uppercase leading-none">
-                  LABELS
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 md:h-12 w-auto object-contain bg-white rounded-lg p-1.5 shadow-md shadow-slate-950/20 group-hover:scale-[1.02] transition-transform duration-200" />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
               State-of-the-art label production and printing solutions. Delivering premium high-precision commercial tags and self-adhesive stickers to international brands.
@@ -76,7 +66,6 @@ export default function Footer() {
                 { name: "Industries", href: "/industries" },
                 { name: "Client Distribution", href: "/client-coverage" },
                 { name: "Portfolio & Works", href: "/portfolio" },
-                { name: "Schedule A Call", href: "/schedule-meeting" },
                 { name: "Contact Inquiry", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -100,7 +89,6 @@ export default function Footer() {
               {[
                 { name: "Label Designing", href: "/services#designing" },
                 { name: "Digital Label Printing", href: "/services#digital-printing" },
-                { name: "Offset Packaging Printing", href: "/services#offset-printing" },
                 { name: "Custom Stickers & Decals", href: "/services#stickers" },
                 { name: "Rotary Garment Labels", href: "/services#rotary-label-printing" },
                 { name: "Premium Screen Printing", href: "/services#screen-printing" },

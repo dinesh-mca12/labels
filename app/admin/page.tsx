@@ -35,17 +35,7 @@ interface InquiryData {
   createdAt: string;
 }
 
-interface AppointmentData {
-  _id: string;
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  date: string;
-  timeSlot: string;
-  purpose: string;
-  createdAt: string;
-}
+
 
 export default function AdminPage() {
   // Authentication State
@@ -57,15 +47,12 @@ export default function AdminPage() {
 
   // Dashboard Data State
   const [inquiries, setInquiries] = useState<InquiryData[]>([]);
-  const [appointments, setAppointments] = useState<AppointmentData[]>([]);
   const [isOffline, setIsOffline] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"inquiries" | "appointments">("inquiries");
 
   // Filter & Search State
   const [inquirySearch, setInquirySearch] = useState("");
   const [inquiryFilter, setInquiryFilter] = useState<"All" | "Pending" | "Contacted" | "Resolved">("All");
-  const [appointmentSearch, setAppointmentSearch] = useState("");
 
   // Detailed Modal/Drawer State for viewing messages
   const [selectedInquiry, setSelectedInquiry] = useState<InquiryData | null>(null);
@@ -92,14 +79,10 @@ export default function AdminPage() {
     try {
       const inqResponse = await fetch("/api/admin/inquiries");
       const inqData = await inqResponse.json();
-      
-      const aptResponse = await fetch("/api/admin/appointments");
-      const aptData = await aptResponse.json();
 
-      if (inqData.success && aptData.success) {
+      if (inqData.success) {
         setInquiries(inqData.inquiries);
-        setAppointments(aptData.appointments);
-        setIsOffline(inqData.offline || aptData.offline);
+        setIsOffline(inqData.offline);
       } else {
         showToast("Error loading data from servers", "error");
       }
@@ -192,25 +175,6 @@ export default function AdminPage() {
     }
   };
 
-  // Delete Appointment
-  const handleDeleteAppointment = async (id: string) => {
-    if (!confirm("Are you sure you want to cancel and delete this scheduled meeting?")) return;
-    try {
-      const res = await fetch(`/api/admin/appointments?id=${id}`, {
-        method: "DELETE",
-      });
-      const data = await res.json();
-      if (data.success) {
-        setAppointments((prev) => prev.filter((apt) => apt._id !== id));
-        showToast("Meeting slot cancelled & deleted", "success");
-      } else {
-        showToast("Failed to delete appointment", "error");
-      }
-    } catch (err) {
-      showToast("Network error cancelling meeting", "error");
-    }
-  };
-
   // Filter & Search Logic
   const filteredInquiries = inquiries.filter((inq) => {
     const matchesSearch =
@@ -225,20 +189,10 @@ export default function AdminPage() {
     return matchesSearch && matchesFilter;
   });
 
-  const filteredAppointments = appointments.filter((apt) => {
-    return (
-      apt.name.toLowerCase().includes(appointmentSearch.toLowerCase()) ||
-      apt.company.toLowerCase().includes(appointmentSearch.toLowerCase()) ||
-      apt.email.toLowerCase().includes(appointmentSearch.toLowerCase()) ||
-      apt.phone.includes(appointmentSearch) ||
-      apt.purpose.toLowerCase().includes(appointmentSearch.toLowerCase())
-    );
-  });
-
   // Calculate Statistics
   const totalInquiriesCount = inquiries.length;
   const pendingInquiriesCount = inquiries.filter((i) => i.status === "Pending").length;
-  const totalAppointmentsCount = appointments.length;
+  const resolvedInquiriesCount = inquiries.filter((i) => i.status === "Resolved").length;
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans pb-16">
@@ -283,15 +237,13 @@ export default function AdminPage() {
       <header className="bg-white border-b border-slate-200/60 sticky top-0 z-30 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-sky-50 border border-slate-100 p-0.5 flex items-center justify-center">
-              <img src="/logo.png" alt="Velmurugan Labels" className="w-full h-full object-contain" />
-            </div>
-            <div>
-              <h1 className="font-extrabold text-slate-800 text-lg tracking-tight leading-none">
-                Velmurugan Labels
+            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 w-auto object-contain" />
+            <div className="border-l border-slate-200 pl-3">
+              <h1 className="font-extrabold text-slate-800 text-sm tracking-tight leading-none">
+                Admin Panel
               </h1>
-              <p className="text-[10px] font-bold text-sky-600 tracking-widest uppercase mt-1">
-                Administrative Control Panel
+              <p className="text-[8px] font-bold text-sky-600 tracking-widest uppercase mt-0.5">
+                Control Station
               </p>
             </div>
           </div>
@@ -441,17 +393,17 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              {/* Card 3: Scheduled Slots */}
+              {/* Card 3: Resolved Inquiries */}
               <div className="bg-white border border-slate-200/50 rounded-2xl p-6 shadow-sm flex items-center gap-5 relative overflow-hidden">
-                <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 shrink-0">
-                  <Calendar size={22} />
+                <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
+                  <CheckCircle size={22} />
                 </div>
                 <div>
                   <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                    Scheduled Meetings
+                    Resolved Inquiries
                   </span>
                   <span className="block text-3xl font-extrabold text-slate-800 mt-1">
-                    {isLoading ? "..." : totalAppointmentsCount}
+                    {isLoading ? "..." : resolvedInquiriesCount}
                   </span>
                 </div>
                 <div className="absolute right-4 bottom-2 text-slate-100 select-none pointer-events-none font-bold text-7xl opacity-40">
@@ -462,83 +414,33 @@ export default function AdminPage() {
 
             {/* Dynamic Panel Controls & Filters */}
             <div className="bg-white border border-slate-200/50 rounded-3xl p-6 shadow-xs space-y-6">
-              {/* Tab Navigation */}
-              <div className="flex border-b border-slate-100 pb-2">
-                <div className="flex gap-4">
-                  <button
-                    onClick={() => setActiveTab("inquiries")}
-                    className={`pb-4 px-2 font-bold text-sm tracking-wide relative transition-colors duration-200 cursor-pointer ${
-                      activeTab === "inquiries" ? "text-sky-600" : "text-slate-400 hover:text-slate-600"
-                    }`}
-                  >
-                    Customer Inquiries ({inquiries.length})
-                    {activeTab === "inquiries" && (
-                      <motion.div
-                        layoutId="activeTabUnderline"
-                        className="absolute bottom-0 left-0 right-0 h-[3px] bg-sky-600 rounded-full"
-                      />
-                    )}
-                  </button>
-                  <button
-                    onClick={() => setActiveTab("appointments")}
-                    className={`pb-4 px-2 font-bold text-sm tracking-wide relative transition-colors duration-200 cursor-pointer ${
-                      activeTab === "appointments" ? "text-sky-600" : "text-slate-400 hover:text-slate-600"
-                    }`}
-                  >
-                    Meeting Appointments ({appointments.length})
-                    {activeTab === "appointments" && (
-                      <motion.div
-                        layoutId="activeTabUnderline"
-                        className="absolute bottom-0 left-0 right-0 h-[3px] bg-sky-600 rounded-full"
-                      />
-                    )}
-                  </button>
-                </div>
-              </div>
 
               {/* Filters & Actions Bar */}
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-                {activeTab === "inquiries" ? (
-                  /* Inquiry Filters */
-                  <>
-                    <div className="relative w-full sm:w-80">
-                      <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                      <input
-                        type="text"
-                        placeholder="Search name, phone, request..."
-                        value={inquirySearch}
-                        onChange={(e) => setInquirySearch(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-hidden focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all placeholder:text-slate-400 font-medium"
-                      />
-                    </div>
+                <div className="relative w-full sm:w-80">
+                  <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search name, phone, request..."
+                    value={inquirySearch}
+                    onChange={(e) => setInquirySearch(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-hidden focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all placeholder:text-slate-400 font-medium"
+                  />
+                </div>
 
-                    <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-                      <Filter size={14} className="text-slate-400" />
-                      <select
-                        value={inquiryFilter}
-                        onChange={(e: any) => setInquiryFilter(e.target.value)}
-                        className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-hidden text-slate-600"
-                      >
-                        <option value="All">All Statuses</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Contacted">Contacted</option>
-                        <option value="Resolved">Resolved</option>
-                      </select>
-                    </div>
-                  </>
-                ) : (
-                  /* Appointment Filters */
-                  <div className="relative w-full sm:w-80">
-                    <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                      type="text"
-                      placeholder="Search company, host, or notes..."
-                      value={appointmentSearch}
-                      onChange={(e) => setAppointmentSearch(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-2.5 pl-10 pr-4 text-xs focus:outline-hidden focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 focus:bg-white transition-all placeholder:text-slate-400 font-medium"
-                    />
-                  </div>
-                )}
+                <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                  <Filter size={14} className="text-slate-400" />
+                  <select
+                    value={inquiryFilter}
+                    onChange={(e: any) => setInquiryFilter(e.target.value)}
+                    className="bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-hidden text-slate-600"
+                  >
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Contacted">Contacted</option>
+                    <option value="Resolved">Resolved</option>
+                  </select>
+                </div>
               </div>
 
               {/* Data Table Grid */}
@@ -548,153 +450,83 @@ export default function AdminPage() {
                   <RefreshCw size={32} className="text-sky-500 animate-spin" />
                   <p className="text-xs text-slate-400 font-medium">Synchronizing latest database logs...</p>
                 </div>
-              ) : activeTab === "inquiries" ? (
-                /* Inquiries View Panel */
-                filteredInquiries.length === 0 ? (
-                  <div className="text-center py-16 border border-dashed border-slate-200 rounded-2xl">
-                    <TrendingUp size={36} className="text-slate-300 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-slate-500">No matching inquiries found.</p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto rounded-xl border border-slate-100">
-                    <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                      <thead>
-                        <tr className="bg-slate-50/70 border-b border-slate-100 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
-                          <th className="py-4 px-5">Client Info</th>
-                          <th className="py-4 px-5">Request Service</th>
-                          <th className="py-4 px-5">Dated</th>
-                          <th className="py-4 px-5">Status</th>
-                          <th className="py-4 px-5 text-right">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
-                        {filteredInquiries.map((inq) => (
-                          <tr key={inq._id} className="hover:bg-slate-50/40 transition-colors duration-150">
-                            <td className="py-4 px-5">
-                              <span className="block font-bold text-slate-900 text-sm">{inq.name}</span>
-                              <span className="block text-[11px] text-slate-400 mt-1">{inq.email}</span>
-                              <span className="block text-[11px] text-slate-400 mt-0.5">{inq.phone}</span>
-                            </td>
-                            <td className="py-4 px-5">
-                              <span className="px-2.5 py-1 rounded-md bg-sky-50 border border-sky-100 text-sky-700 text-[11px] font-bold">
-                                {inq.service}
-                              </span>
-                            </td>
-                            <td className="py-4 px-5 text-slate-500 text-xs">
-                              {new Date(inq.createdAt).toLocaleDateString("en-IN", {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric",
-                                hour: "2-digit",
-                                minute: "2-digit",
-                              })}
-                            </td>
-                            <td className="py-4 px-5">
-                              <select
-                                value={inq.status}
-                                onChange={(e: any) => handleStatusChange(inq._id, e.target.value)}
-                                className={`px-2 py-1.5 rounded-lg text-[10px] font-extrabold uppercase border tracking-wider focus:outline-hidden ${
-                                  inq.status === "Pending"
-                                    ? "bg-amber-50 border-amber-200 text-amber-700"
-                                    : inq.status === "Contacted"
-                                    ? "bg-sky-50 border-sky-200 text-sky-700"
-                                    : "bg-emerald-50 border-emerald-200 text-emerald-700"
-                                }`}
-                              >
-                                <option value="Pending">Pending</option>
-                                <option value="Contacted">Contacted</option>
-                                <option value="Resolved">Resolved</option>
-                              </select>
-                            </td>
-                            <td className="py-4 px-5 text-right flex items-center justify-end gap-2.5">
-                              <button
-                                onClick={() => setSelectedInquiry(inq)}
-                                className="p-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-slate-500 hover:text-slate-800 transition-colors flex items-center justify-center cursor-pointer"
-                                title="View Message details"
-                              >
-                                <Eye size={14} />
-                              </button>
-                              <button
-                                onClick={() => handleDeleteInquiry(inq._id)}
-                                className="p-2 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-100 rounded-lg text-slate-400 hover:text-rose-600 transition-colors flex items-center justify-center cursor-pointer"
-                                title="Delete Log"
-                              >
-                                <Trash2 size={14} />
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )
+              ) : filteredInquiries.length === 0 ? (
+                <div className="text-center py-16 border border-dashed border-slate-200 rounded-2xl">
+                  <TrendingUp size={36} className="text-slate-300 mx-auto mb-2" />
+                  <p className="text-sm font-semibold text-slate-500">No matching inquiries found.</p>
+                </div>
               ) : (
-                /* Appointments View Panel */
-                filteredAppointments.length === 0 ? (
-                  <div className="text-center py-16 border border-dashed border-slate-200 rounded-2xl">
-                    <Calendar size={36} className="text-slate-300 mx-auto mb-2" />
-                    <p className="text-sm font-semibold text-slate-500">No scheduled meetings found.</p>
-                  </div>
-                ) : (
-                  <div className="overflow-x-auto rounded-xl border border-slate-100">
-                    <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                      <thead>
-                        <tr className="bg-slate-50/70 border-b border-slate-100 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
-                          <th className="py-4 px-5">Host & Company</th>
-                          <th className="py-4 px-5">Contact Info</th>
-                          <th className="py-4 px-5">Schedule Slot</th>
-                          <th className="py-4 px-5">Discussion Topic</th>
-                          <th className="py-4 px-5 text-right">Actions</th>
+                <div className="overflow-x-auto rounded-xl border border-slate-100">
+                  <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                    <thead>
+                      <tr className="bg-slate-50/70 border-b border-slate-100 text-slate-500 font-bold uppercase tracking-wider text-[10px]">
+                        <th className="py-4 px-5">Client Info</th>
+                        <th className="py-4 px-5">Request Service</th>
+                        <th className="py-4 px-5">Dated</th>
+                        <th className="py-4 px-5">Status</th>
+                        <th className="py-4 px-5 text-right">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
+                      {filteredInquiries.map((inq) => (
+                        <tr key={inq._id} className="hover:bg-slate-50/40 transition-colors duration-150">
+                          <td className="py-4 px-5">
+                            <span className="block font-bold text-slate-900 text-sm">{inq.name}</span>
+                            <span className="block text-[11px] text-slate-400 mt-1">{inq.email}</span>
+                            <span className="block text-[11px] text-slate-400 mt-0.5">{inq.phone}</span>
+                          </td>
+                          <td className="py-4 px-5">
+                            <span className="px-2.5 py-1 rounded-md bg-sky-50 border border-sky-100 text-sky-700 text-[11px] font-bold">
+                              {inq.service}
+                            </span>
+                          </td>
+                          <td className="py-4 px-5 text-slate-500 text-xs">
+                            {new Date(inq.createdAt).toLocaleDateString("en-IN", {
+                              day: "2-digit",
+                              month: "short",
+                              year: "numeric",
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </td>
+                          <td className="py-4 px-5">
+                            <select
+                              value={inq.status}
+                              onChange={(e: any) => handleStatusChange(inq._id, e.target.value)}
+                              className={`px-2 py-1.5 rounded-lg text-[10px] font-extrabold uppercase border tracking-wider focus:outline-hidden ${
+                                inq.status === "Pending"
+                                  ? "bg-amber-50 border-amber-200 text-amber-700"
+                                  : inq.status === "Contacted"
+                                  ? "bg-sky-50 border-sky-200 text-sky-700"
+                                  : "bg-emerald-50 border-emerald-200 text-emerald-700"
+                              }`}
+                            >
+                              <option value="Pending">Pending</option>
+                              <option value="Contacted">Contacted</option>
+                              <option value="Resolved">Resolved</option>
+                            </select>
+                          </td>
+                          <td className="py-4 px-5 text-right flex items-center justify-end gap-2.5">
+                            <button
+                              onClick={() => setSelectedInquiry(inq)}
+                              className="p-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-slate-500 hover:text-slate-800 transition-colors flex items-center justify-center cursor-pointer"
+                              title="View Message details"
+                            >
+                              <Eye size={14} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteInquiry(inq._id)}
+                              className="p-2 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-100 rounded-lg text-slate-400 hover:text-rose-600 transition-colors flex items-center justify-center cursor-pointer"
+                              title="Delete Log"
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          </td>
                         </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
-                        {filteredAppointments.map((apt) => (
-                          <tr key={apt._id} className="hover:bg-slate-50/40 transition-colors duration-150">
-                            <td className="py-4 px-5">
-                              <span className="block font-bold text-slate-900 text-sm">{apt.name}</span>
-                              <span className="block text-[11px] text-slate-400 mt-1 flex items-center gap-1 font-bold">
-                                <Briefcase size={12} className="text-slate-400" />
-                                {apt.company}
-                              </span>
-                            </td>
-                            <td className="py-4 px-5">
-                              <span className="block text-slate-600">{apt.email}</span>
-                              <span className="block text-slate-400 text-[11px] mt-0.5">{apt.phone}</span>
-                            </td>
-                            <td className="py-4 px-5">
-                              <div className="flex items-center gap-1.5 text-slate-900 font-semibold">
-                                <Calendar size={13} className="text-sky-600" />
-                                <span>
-                                  {new Date(apt.date).toLocaleDateString("en-IN", {
-                                    day: "2-digit",
-                                    month: "short",
-                                    year: "numeric",
-                                  })}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-1.5 text-slate-400 text-[11px] mt-1 font-medium">
-                                <Clock size={12} />
-                                <span>{apt.timeSlot}</span>
-                              </div>
-                            </td>
-                            <td className="py-4 px-5 max-w-xs text-slate-600 truncate" title={apt.purpose}>
-                              {apt.purpose}
-                            </td>
-                            <td className="py-4 px-5 text-right">
-                              <button
-                                onClick={() => handleDeleteAppointment(apt._id)}
-                                className="p-2 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-rose-100 rounded-lg text-slate-400 hover:text-rose-600 transition-colors inline-flex items-center justify-center cursor-pointer"
-                                title="Cancel Meeting"
-                              >
-                                <Trash2 size={14} />
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               )}
             </div>
           </div>
