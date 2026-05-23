@@ -94,6 +94,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [expandedDropdown, setExpandedDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,7 +108,20 @@ export default function Navbar() {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
+    setExpandedDropdown(null);
   }, [pathname]);
+
+  // Body scroll locking when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
     <header
@@ -295,12 +309,13 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex items-center">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-lg transition-colors"
+              onClick={() => setIsOpen(true)}
+              className="p-2.5 text-slate-600 hover:text-sky-600 hover:bg-slate-50 rounded-xl transition-all duration-200 border border-slate-100 hover:border-slate-200"
+              aria-label="Open Navigation Menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              <Menu size={22} className="stroke-[2.2]" />
             </button>
           </div>
         </div>
@@ -310,89 +325,163 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <>
+            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
+              animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 top-20 bg-black z-40 lg:hidden"
+              className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 lg:hidden"
             />
+            
+            {/* Slide-in Premium Side Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed right-0 top-20 bottom-0 w-80 max-w-full bg-white shadow-xl z-50 lg:hidden p-6 border-l border-slate-100 overflow-y-auto flex flex-col justify-between"
+              transition={{ type: "spring", stiffness: 380, damping: 36 }}
+              className="fixed right-0 top-0 bottom-0 w-[340px] max-w-[85vw] bg-white/95 backdrop-blur-lg shadow-2xl z-50 lg:hidden flex flex-col justify-between h-screen overflow-hidden border-l border-slate-100"
             >
-              <div className="space-y-6">
-                <div className="flex flex-col gap-2">
-                  {navItems.map((item) => (
-                    <div key={item.name}>
-                      {item.hasDropdown === "services" ? (
-                        <div className="py-2">
-                          <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest block mb-2 px-3">
-                            Services
-                          </span>
-                          <div className="grid gap-1 pl-3 border-l border-slate-100">
-                            {services.map((srv) => (
-                              <Link
-                                key={srv.name}
-                                href={srv.href}
-                                className="py-2 text-sm font-medium text-slate-600 hover:text-sky-600 block transition-colors"
-                              >
-                                {srv.name}
-                              </Link>
-                            ))}
+              {/* Drawer Top Header (Logo & Close Button) */}
+              <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-white shrink-0">
+                <Link 
+                  href="/" 
+                  onClick={() => setIsOpen(false)} 
+                  className="flex items-center group shrink-0 relative py-1 px-2.5 bg-slate-50 border border-slate-100 rounded-xl"
+                >
+                  <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-8 w-auto object-contain" />
+                </Link>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-800 border border-slate-100 transition-all duration-205"
+                  aria-label="Close Navigation Menu"
+                >
+                  <X size={18} className="stroke-[2.2]" />
+                </button>
+              </div>
+
+              {/* Scrollable Navigation links with Accordions */}
+              <div className="flex-grow overflow-y-auto px-6 py-6 space-y-6 overscroll-contain">
+                <div className="flex flex-col gap-1.5">
+                  {navItems.map((item) => {
+                    const isDropdown = !!item.hasDropdown;
+                    const isExpanded = expandedDropdown === item.name;
+                    const isActive = pathname === item.href;
+
+                    return (
+                      <div key={item.name} className="border-b border-slate-50/50 pb-1.5 last:border-0 last:pb-0">
+                        {isDropdown ? (
+                          <div className="space-y-1">
+                            {/* Accordion Toggle Trigger */}
+                            <button
+                              onClick={() => setExpandedDropdown(isExpanded ? null : item.name)}
+                              className={`w-full flex items-center justify-between py-3 px-3 rounded-xl font-bold text-base transition-all duration-200 ${
+                                isExpanded 
+                                  ? "text-sky-600 bg-sky-50/50" 
+                                  : "text-slate-800 hover:text-sky-600 hover:bg-slate-50/50"
+                              }`}
+                            >
+                              <span>{item.name}</span>
+                              <ChevronDown 
+                                size={16} 
+                                className={`text-slate-400 transition-transform duration-300 ${
+                                  isExpanded ? "rotate-180 text-sky-600" : ""
+                                }`} 
+                              />
+                            </button>
+                            
+                            {/* Accordion Sub-Menu Panel */}
+                            <AnimatePresence initial={false}>
+                              {isExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: "auto", opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                                  className="overflow-hidden pl-3 border-l-2 border-sky-100/60 mt-1 space-y-1 bg-slate-50/30 rounded-r-xl"
+                                >
+                                  {item.hasDropdown === "services" ? (
+                                    <div className="py-2 pr-2 space-y-1">
+                                      {services.map((srv) => (
+                                        <Link
+                                          key={srv.name}
+                                          href={srv.href}
+                                          onClick={() => setIsOpen(false)}
+                                          className="w-full block py-2.5 px-3 rounded-lg text-[13px] font-bold text-slate-600 hover:text-sky-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all duration-200"
+                                        >
+                                          {srv.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  ) : (
+                                    <div className="py-2 pr-2 space-y-1">
+                                      {articles.map((art) => (
+                                        <Link
+                                          key={art.name}
+                                          href={art.href}
+                                          onClick={() => setIsOpen(false)}
+                                          className="w-full block py-2.5 px-3 rounded-lg text-[13px] font-bold text-slate-600 hover:text-sky-600 hover:bg-white border border-transparent hover:border-slate-100 transition-all duration-200"
+                                        >
+                                          {art.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  )}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
                           </div>
-                        </div>
-                      ) : item.hasDropdown === "articles" ? (
-                        <div className="py-2">
-                          <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest block mb-2 px-3">
-                            Articles & Insights
-                          </span>
-                          <div className="grid gap-1 pl-3 border-l border-slate-100">
-                            {articles.map((art) => (
-                              <Link
-                                key={art.name}
-                                href={art.href}
-                                className="py-2 text-xs font-medium text-slate-600 hover:text-sky-600 block transition-colors"
-                              >
-                                {art.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          className={`block py-3 px-3 text-base font-semibold rounded-xl hover:bg-slate-50 transition-colors ${
-                            pathname === item.href
-                              ? "text-sky-600 bg-sky-50/50"
-                              : "text-slate-800 hover:text-sky-600"
-                          }`}
-                        >
-                          {item.name}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
+                        ) : (
+                          /* Regular Link */
+                          <Link
+                            href={item.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`block py-3 px-3 text-base font-bold rounded-xl transition-all duration-200 ${
+                              isActive
+                                ? "text-sky-600 bg-sky-50/50"
+                                : "text-slate-800 hover:text-sky-600 hover:bg-slate-50/50"
+                            }`}
+                          >
+                            {item.name}
+                          </Link>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-slate-100 flex flex-col gap-3">
-                <Link
-                  href="/admin"
-                  className="w-full flex items-center justify-center gap-2 py-3 border border-slate-200 rounded-xl font-semibold text-slate-600 text-sm hover:bg-slate-50 transition-colors"
-                >
-                  <Lock size={15} />
-                  Admin Dashboard
-                </Link>
-                <Link
-                  href="/contact"
-                  className="w-full flex items-center justify-center gap-2 py-3 bg-sky-600 rounded-xl font-semibold text-white text-sm hover:bg-sky-700 shadow-md shadow-sky-100 transition-colors"
-                >
-                  Get A Quote
-                </Link>
+              {/* Bottom Sticky Action Block */}
+              <div className="p-6 border-t border-slate-100 bg-slate-50/80 backdrop-blur-md shrink-0 space-y-4">
+                <div className="flex flex-col gap-2">
+                  <Link
+                    href="/admin"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full flex items-center justify-center gap-2 py-3 border border-slate-200/80 hover:border-sky-350/40 rounded-xl font-bold text-slate-600 text-xs uppercase tracking-wider hover:bg-white hover:text-sky-600 hover:shadow-sm transition-all duration-200"
+                  >
+                    <Lock size={14} className="stroke-[2.2]" />
+                    Admin Dashboard
+                  </Link>
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full flex items-center justify-center gap-2 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md shadow-sky-100/50 hover:shadow-lg transition-all duration-200 text-center"
+                  >
+                    Get A Quote
+                  </Link>
+                </div>
+                
+                {/* Logistics Coordinates Info Footer */}
+                <div className="pt-4 border-t border-slate-200/40 text-[10px] text-slate-400 space-y-2 font-bold uppercase tracking-wider">
+                  <div className="flex items-center gap-2">
+                    <Phone size={12} className="text-sky-500 shrink-0" />
+                    <a href="tel:+918220046231" className="hover:text-slate-700 transition-colors">+91 82200 46231</a>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={12} className="text-sky-500 shrink-0 animate-bounce" />
+                    <span>Tiruppur, Tamil Nadu Hub</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </>
