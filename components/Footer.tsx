@@ -18,7 +18,7 @@ export default function Footer() {
             {/* Mail, WhatsApp & Instagram icons */}
             <div className="flex gap-4 pt-2">
               <a
-                href="mailto:sales@velmuruganlabels.com"
+                href="mailto:velmuruganlabels@gmail.com"
                 aria-label="Send Email"
                 className="w-10 h-10 rounded-full bg-slate-800 hover:bg-sky-500 hover:text-white flex items-center justify-center text-slate-400 transition-all duration-200"
               >

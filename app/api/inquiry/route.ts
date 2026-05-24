@@ -43,8 +43,8 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: `"Velmurugan Labels Alerts" <alerts@velmuruganlabels.com>`,
-      to: "sales@velmuruganlabels.com",
+      from: `"Velmurugan Labels Alerts" <velmuruganlabels@gmail.com>`,
+      to: "velmuruganlabels@gmail.com",
       subject: `New Inquiry from ${validatedData.name} - ${validatedData.service}`,
       text: `
         Name: ${validatedData.name}

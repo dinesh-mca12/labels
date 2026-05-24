@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Printer,
+  ChevronLeft,
   ChevronRight,
   TrendingUp,
   Award,
@@ -29,6 +30,8 @@ import {
   Sliders,
   Cpu,
   Truck,
+  Maximize2,
+  X,
 } from "lucide-react";
 
 const homeServices = [
@@ -132,6 +135,73 @@ const testimonials = [
   },
 ];
 
+// Authentic Brand Work Gallery items
+const workGalleryItems = [
+  {
+    id: "work-minymo",
+    title: "Minymo Organic Cotton Board Tag",
+    category: "Eco & Organic",
+    description: "FSC-certified biodegradable raw board tag with customized debossed brand printing and organic cotton hanger threads, fabricated for sustainable Scandinavian export fashion.",
+    image: "/gallery-work-minymo.png",
+  },
+  {
+    id: "work-brands",
+    title: "Color Kids & Pokemon Luxury Tags",
+    category: "Licensed Brands",
+    description: "Premium die-cut paperboard tags displaying high-fidelity Pantone color consistency, soft-touch matte lamination, and integrated security barcodes.",
+    image: "/gallery-work-brands.png",
+  },
+  {
+    id: "work-pret",
+    title: "FC Barcelona & Pret Recycled Tags",
+    category: "Licensed Brands",
+    description: "Licensed sports club tags and unique bottle-shaped Pret 100% recycled fabric certifications, made under stringent anti-counterfeit print controls.",
+    image: "/gallery-work-pret.png",
+  },
+  {
+    id: "work-cartoons",
+    title: "Nickelodeon Garfield & Smurfs Tags",
+    category: "Licensed Brands",
+    description: "Nickelodeon certified vector graphics, glossy high-saturation spot varnish finish, and back-side pricing structures printed for global youth wear collections.",
+    image: "/gallery-work-cartoons.png",
+  },
+  {
+    id: "work-kids",
+    title: "PAW Patrol & Rubble Custom Shields",
+    category: "Licensed Brands",
+    description: "Intricately die-cut shield profiles and cartoon merchandise labels featuring rich glossy seal coats and high-grade safety grommets.",
+    image: "/gallery-work-kids.png",
+  },
+  {
+    id: "work-ramraj",
+    title: "Ramraj & Blue Moon Satin Care Labels",
+    category: "Wash Care & Woven",
+    description: "Export-grade ultra-soft satin wash care labels printed with high-density wash-resistant ink in multiple languages (English, French, Spanish) for premier shirt brands.",
+    image: "/gallery-work-ramraj.jpg",
+  },
+  {
+    id: "work-decathlon",
+    title: "Decathlon & Point Cove Custom Wash Labels",
+    category: "Wash Care & Woven",
+    description: "Professional high-density woven neck labels and multi-language wash instruction ribbons with integrated safety barcodes and Decathlon compliance standards.",
+    image: "/gallery-work-decathlon.jpg",
+  },
+  {
+    id: "trust-quality",
+    title: "Oeko-Tex® Standard 100 Certification",
+    category: "Eco & Organic",
+    description: "Our premium white satin and organic cotton labels are fully certified to be 100% free of harmful substances, meeting international safety standards for skin contact in global garment exports.",
+    image: "/gallery-trust-quality.png",
+  },
+  {
+    id: "trust-satisfaction",
+    title: "FSC® & ISO 9001:2015 Standards",
+    category: "Eco & Organic",
+    description: "Crafted in Tiruppur using 100% sustainable paperboard and manufactured under certified ISO 9001 quality audits, ensuring absolute compliance and traceability for export brands.",
+    image: "/gallery-trust-satisfaction.png",
+  },
+];
+
 export default function Home() {
   const [formData, setFormData] = useState({
     name: "",
@@ -144,6 +214,9 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -172,13 +245,17 @@ export default function Home() {
     }
   };
 
+  const filteredWorkItems = activeCategory === "All"
+    ? workGalleryItems
+    : workGalleryItems.filter((item) => item.category === activeCategory);
+
   return (
     <div className="relative overflow-hidden bg-slate-50/50">
       
       <section className="relative pt-24 pb-20 md:pt-32 md:pb-24 overflow-hidden isolate border-b border-slate-100">
         {/* Supporting premium background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center -z-20 opacity-90 transition-all duration-700 ease-in-out"
+          className="absolute inset-0 bg-cover bg-[center_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
           style={{ backgroundImage: "url('/home-hero-bg.png')" }}
         />
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
@@ -399,6 +476,178 @@ export default function Home() {
 
         </div>
       </section>
+
+      {/* 2.5. Our Work Gallery Section */}
+      <section className="py-16 bg-white relative overflow-hidden isolate border-b border-slate-100">
+        {/* Soft glowing ambient orbs */}
+        <div className="absolute top-1/3 left-1/10 w-[500px] h-[500px] bg-sky-100/10 rounded-full blur-[130px] -z-10 pointer-events-none" />
+        <div className="absolute bottom-1/3 right-1/10 w-[450px] h-[450px] bg-indigo-50/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-bold text-sky-600 uppercase tracking-widest">
+              <Sparkles size={12} className="animate-pulse" />
+              Our Print Portfolio
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Textile Branding <span className="bg-gradient-to-r from-sky-600 to-indigo-600 bg-clip-text text-transparent">Masterpieces</span> We Fabricate
+            </h2>
+            <p className="text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
+              Explore the premium hang tags, FSC-certified organic boards, and licensed garment labels trusted by top export apparel houses worldwide.
+            </p>
+          </div>
+
+          {/* Filtration Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-2.5 mb-10">
+            {["All", "Licensed Brands", "Wash Care & Woven", "Eco & Organic"].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border cursor-pointer ${
+                  activeCategory === cat
+                    ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-950/10 scale-105"
+                    : "bg-white/80 backdrop-blur-md border-slate-200 text-slate-650 hover:bg-slate-50 hover:border-slate-350"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Work Gallery Cards Grid */}
+          <motion.div
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredWorkItems.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={() => setLightboxIndex(workGalleryItems.findIndex(w => w.id === item.id))}
+                  className="group bg-white rounded-3xl p-3 border border-slate-200/50 hover:border-sky-300/40 shadow-sm hover:shadow-2xl hover:shadow-sky-100/30 transition-all duration-300 flex flex-col justify-between cursor-pointer"
+                >
+                  {/* Image Viewport */}
+                  <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-900 relative isolate border border-slate-100 flex items-center justify-center">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover scale-[1.2] group-hover:scale-[1.28] transition-transform duration-500 ease-out origin-center"
+                    />
+                    <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                      <div className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <Maximize2 size={16} />
+                      </div>
+                    </div>
+                    
+                    {/* Category Label Overlay */}
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-0.5 text-[9px] font-bold text-white uppercase tracking-widest bg-slate-950/60 backdrop-blur-md border border-white/10 rounded-full">
+                        {item.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Descriptions */}
+                  <div className="p-4 text-left space-y-2 flex-grow flex flex-col justify-between">
+                    <div className="space-y-1">
+                      <h4 className="text-sm sm:text-base font-extrabold text-slate-800 group-hover:text-sky-600 transition-colors duration-250">
+                        {item.title}
+                      </h4>
+                      <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-normal">
+                        {item.description}
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-slate-100 mt-2 flex justify-between items-center text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                      <span>Certified Quality</span>
+                      <span className="text-sky-600 group-hover:translate-x-1 transition-transform duration-300 flex items-center gap-1">
+                        Maximize <ArrowRight size={10} />
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* 2.6. Fullscreen Work Lightbox Modal */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-slate-950/98 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6"
+          >
+            {/* Top Bar Controls */}
+            <div className="flex justify-between items-center w-full max-w-7xl mx-auto z-10 pt-2">
+              <span className="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-widest bg-slate-900 border border-slate-800 px-3 py-1 rounded-full">
+                Item {lightboxIndex + 1} of {workGalleryItems.length}
+              </span>
+              <button
+                onClick={() => setLightboxIndex(null)}
+                className="w-10 h-10 rounded-xl bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center border border-slate-800 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Image Viewport */}
+            <div className="relative flex-grow flex items-center justify-center max-w-7xl mx-auto w-full p-2">
+              <motion.img
+                key={lightboxIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 260, damping: 25 }}
+                src={workGalleryItems[lightboxIndex].image}
+                alt={workGalleryItems[lightboxIndex].title}
+                className="max-h-[70vh] sm:max-h-[75vh] w-auto max-w-full rounded-2xl sm:rounded-[24px] object-contain shadow-2xl border border-white/5"
+              />
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={() => {
+                  setLightboxIndex((prev) => (prev! === 0 ? workGalleryItems.length - 1 : prev! - 1));
+                }}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/80 border border-slate-800 text-white flex items-center justify-center hover:bg-slate-850 hover:scale-105 transition-all shadow-xl cursor-pointer"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={() => {
+                  setLightboxIndex((prev) => (prev! === workGalleryItems.length - 1 ? 0 : prev! + 1));
+                }}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-slate-900/80 border border-slate-800 text-white flex items-center justify-center hover:bg-slate-850 hover:scale-105 transition-all shadow-xl cursor-pointer"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+
+            {/* Bottom details */}
+            <div className="w-full max-w-3xl mx-auto text-center space-y-2 pb-6 z-10">
+              <span className="text-[10px] font-bold text-sky-400 uppercase tracking-widest block">
+                {workGalleryItems[lightboxIndex].category}
+              </span>
+              <h3 className="text-lg sm:text-2xl font-black text-white leading-tight">
+                {workGalleryItems[lightboxIndex].title}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
+                {workGalleryItems[lightboxIndex].description}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 3. Services Preview */}
       <section className="py-24 bg-gradient-to-b from-white via-slate-50/10 to-white relative overflow-hidden isolate border-b border-slate-100">

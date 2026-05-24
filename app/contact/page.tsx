@@ -105,8 +105,8 @@ export default function Contact() {
                   </li>
                   <li className="flex gap-3 items-center">
                     <Mail size={18} className="text-sky-400 shrink-0" />
-                    <a href="mailto:sales@velmuruganlabels.com" className="hover:text-white transition-colors">
-                      sales@velmuruganlabels.com
+                    <a href="mailto:velmuruganlabels@gmail.com" className="hover:text-white transition-colors">
+                      velmuruganlabels@gmail.com
                     </a>
                   </li>
                   <li className="flex gap-3 items-center">
