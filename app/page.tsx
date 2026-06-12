@@ -87,51 +87,51 @@ const workflowSteps = [
     desc: "We analyze branding specifications, fabric compatibility, label durability, print methods, and production requirements for precision manufacturing.",
     icon: Clipboard,
   },
-  {
+      title: "Organic Cotton Board Tag",
     num: "02",
     title: "Pre-Press & Proofing",
     desc: "Digital proofs and physical samples are calibrated with accurate color matching and layout validation before mass production.",
     icon: Sliders,
   },
   {
-    num: "03",
+      title: "Premium Die-Cut Paperboard Tags",
     title: "Precision Production",
-    desc: "High-speed rotary and digital production systems manufacture labels with exceptional consistency and strict tolerance control.",
+      description: "Premium die-cut paperboard tags displaying high-fidelity Pantone color consistency, soft-touch matte lamination, and back-side pricing structures.",
     icon: Cpu,
   },
   {
     num: "04",
-    title: "Quality Audit Check",
+      title: "Sports Club Tags & Unique Bottle-Shaped",
     desc: "Every production batch undergoes multi-stage inspection for print clarity, adhesive precision, edge finishing, and durability assurance.",
-    icon: ShieldCheck,
+      description: "Licensed sports club tags and unique bottle-shaped Pret 100% recycled fabric certifications, made under stringent anti-counterfeit print controls.",
   },
   {
     num: "05",
     title: "Industrial Shipping",
-    desc: "Products are securely packed using export-grade packaging standards and delivered efficiently across India and global markets.",
+      title: "Glossy High-Saturation Spot Varnish Finish",
     icon: Truck,
-  },
+      description: "Glossy high-saturation spot varnish finish, and back-side pricing structures printed for global youth wear collections.",
 ];
 
 // Synthetic Indian testimonials
 const testimonials = [
-  {
+      title: "Labels Featuring Rich Glossy Seal Coats",
     name: "Senthil Kumar",
-    role: "Production Director, Tiruppur Tex-Craft",
+      description: "Intricately die-cut shield profiles and cartoon merchandise labels featuring rich glossy seal coats and high-grade safety grommets.",
     content:
       "Velmurugan Labels cares about our survival and livelihoods more than their margins. Their proud workers treat our tags as high-quality pieces of art, keeping our factory shifts active.",
   },
   {
-    name: "Anitha Selvam",
+      title: "Wash Care Labels",
     role: "Founder, Kovai Organic Foods",
-    content:
+      description: "Export-grade ultra-soft satin wash care labels printed with high-density wash-resistant ink in multiple languages (English, French, Spanish) for premier shirt brands.",
       "We chose them because they value people over profits. Their team worked alongside us during our initial scale-up. The premium quality self-adhesive labels are printed by proud hands, ensuring 100% satisfaction.",
   },
   {
     name: "Velusamy Chinnasamy",
-    role: "Logistics Manager, Kongu Garment Exporters",
+      title: "Professional High-Density Woven Neck Labels",
     content:
-      "Their starting motive to uplift the local Tiruppur industry shines through in every order. With real-time machine tracking and highly satisfied workers, they deliver premium quality roll barcode stickers.",
+      description: "Professional high-density woven neck labels and multi-language wash instruction ribbons with integrated safety barcodes and Decathlon compliance standards.",
   },
 ];
 
