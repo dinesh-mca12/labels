@@ -43,13 +43,6 @@ const services = [
     image: "/portfolio-sticker-vinyl.png",
   },
   {
-    name: "Poly Cover Printing & Cutting",
-    description: "Custom printed transparent garment poly covers & eco-bio covers.",
-    href: "/services#poly-covers",
-    icon: Package,
-    image: "/srv-poly-covers.png",
-  },
-  {
     name: "Label Cut & Seal",
     description: "Automated ultrasonic clean ribbon trimming & frayed-edge sealing.",
     href: "/services#cut-seal",
