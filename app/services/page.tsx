@@ -103,23 +103,6 @@ const servicesData = [
     industries: "Manufacturing, FMCG, Logistics, Retail",
   },
   {
-    id: "poly-covers",
-    title: "Poly Cover Print & Cutting",
-    icon: Package,
-    tagline: "Custom printed transparent plastic packaging and eco-bio covers.",
-    description:
-      "We manufacture premium, protective garment packaging poly covers, transparent shipping bags, and biodegradable bio-covers. Custom-branded with your logos, wash parameters, and size codes, our poly covers keep products dustproof, fresh, and beautifully organized through bulk shipping cycles.",
-    features: [
-      "Custom logo and handling instruction brand prints",
-      "Eco-friendly Bio Cover (biodegradable) options",
-      "Ultra-clear dustproof poly films with secure sealing",
-      "Self-adhesive strip or zip-lock closure options",
-    ],
-    workflow: "Poly Resin Extrusion &rarr; Logo Brand Flexo Print &rarr; Dynamic Hot-Knife Bag Sealing &rarr; Sealing Strips",
-    benefits: "Keeps merchandise clean and dustproof, displays beautiful logos, and aligns with dynamic shipping layouts.",
-    industries: "Garments, Logistics, Retail Exporters, FMCG Packaging",
-  },
-  {
     id: "cut-seal",
     title: "Label Cut & Seal",
     icon: Scissors,
@@ -182,7 +165,6 @@ export default function Services() {
               "hang-tag": "/srv-designing.png",
               "woven-labels": "/srv-woven-labels.png",
               "stickers": "/portfolio-sticker-vinyl.png",
-              "poly-covers": "/srv-poly-covers.png",
               "cut-seal": "/portfolio-tag-satin.png",
             };
             const srvImage = serviceImages[srv.id] || "/srv-designing.png";
