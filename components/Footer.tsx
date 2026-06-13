@@ -87,11 +87,11 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 text-sm">
               {[
-                { name: "Label Designing", href: "/services#designing" },
-                { name: "Digital Label Printing", href: "/services#digital-printing" },
-                { name: "Custom Stickers & Decals", href: "/services#stickers" },
-                { name: "Rotary Garment Labels", href: "/services#rotary-label-printing" },
-                { name: "Premium Screen Printing", href: "/services#screen-printing" },
+                { name: "Label Designing", href: "/products/hang-tags" },
+                { name: "Digital Label Printing", href: "/products/dtf-stickers" },
+                { name: "Custom Stickers & Decals", href: "/products/stickers" },
+                { name: "Rotary Garment Labels", href: "/products/wash-care-labels" },
+                { name: "Premium Screen Printing", href: "/products/woven-labels" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
