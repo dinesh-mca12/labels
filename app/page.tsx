@@ -255,7 +255,7 @@ export default function Home() {
         {/* Supporting premium background image */}
         <div 
           className="absolute inset-0 bg-cover bg-[center_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
-          style={{ backgroundImage: "url('/home-hero-bg.png')" }}
+          style={{ backgroundImage: "url('/home-hero.png')" }}
         />
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/90 to-white lg:hidden -z-10" />
@@ -274,10 +274,10 @@ export default function Home() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2.5 p-1 pr-4 rounded-full bg-white border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
               >
-                <span className="px-2.5 py-1 rounded-full bg-sky-600 text-white font-extrabold text-[9px] sm:text-[10px] tracking-widest shrink-0">IN</span>
-                <span className="text-sky-800 font-extrabold pr-1 tracking-wide">INDIA'S TRUSTED LABEL MANUFACTURER</span>
+                <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-500 font-extrabold text-[9px] sm:text-[10px] tracking-wide shrink-0">IN</span>
+                <span className="text-slate-650 font-bold tracking-wide">INDIA'S TRUSTED LABEL MANUFACTURER</span>
               </motion.div>
 
               <motion.h1
@@ -465,7 +465,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="py-3 px-1 text-center border-t border-slate-100 rounded-b-2xl">
-                  <span className="text-[9px] sm:text-[10px] font-black text-sky-600 tracking-wider group-hover:text-sky-700 transition-colors block whitespace-nowrap overflow-hidden text-ellipsis">
+                  <span className="text-[9px] sm:text-[10px] font-black text-sky-600 tracking-wider group-hover:text-sky-700 transition-colors block whitespace-normal">
                     {prod.name}
                   </span>
                 </div>
