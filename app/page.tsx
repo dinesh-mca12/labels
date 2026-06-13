@@ -255,7 +255,7 @@ export default function Home() {
         {/* Supporting premium background image */}
         <div 
           className="absolute inset-0 bg-cover bg-[center_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
-          style={{ backgroundImage: "url('/hero-mockup.jpg')" }}
+          style={{ backgroundImage: "url('/hero-background.png')" }}
         />
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/90 to-white lg:hidden -z-10" />
