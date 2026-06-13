@@ -255,7 +255,7 @@ export default function Home() {
         {/* Supporting premium background image */}
         <div 
           className="absolute inset-0 bg-cover bg-[center_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
-          style={{ backgroundImage: "url('/home-hero.png')" }}
+          style={{ backgroundImage: "url('/hero-mockup.jpg')" }}
         />
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/90 to-white lg:hidden -z-10" />
@@ -361,7 +361,7 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right empty column on desktop to let the custom home-hero-bg pre-rendered tags layout show beautifully */}
+            {/* Right empty column on desktop to let the custom background image show beautifully */}
             <div className="hidden lg:block lg:col-span-5" />
 
           </div>
