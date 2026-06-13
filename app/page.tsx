@@ -11,7 +11,6 @@ import {
   Award,
   ShieldCheck,
   Zap,
-  Settings,
   ArrowRight,
   MessageSquare,
   Sparkles,
@@ -188,14 +187,14 @@ const workGalleryItems = [
   },
   {
     id: "trust-quality",
-    title: "Oeko-Tex┬« Standard 100 Certification",
+    title: "Oeko-Tex® Standard 100 Certification",
     category: "Eco & Organic",
     description: "Our premium white satin and organic cotton labels are fully certified to be 100% free of harmful substances, meeting international safety standards for skin contact in global garment exports.",
     image: "/gallery-trust-quality.png",
   },
   {
     id: "trust-satisfaction",
-    title: "FSC┬« & ISO 9001:2015 Standards",
+    title: "FSC® & ISO 9001:2015 Standards",
     category: "Eco & Organic",
     description: "Crafted in Tiruppur using 100% sustainable paperboard and manufactured under certified ISO 9001 quality audits, ensuring absolute compliance and traceability for export brands.",
     image: "/gallery-trust-satisfaction.png",
@@ -277,7 +276,7 @@ export default function Home() {
                 transition={{ duration: 0.5 }}
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
               >
-                <span>≡ƒç«≡ƒç│</span>
+                <span>IN</span>
                 <span>INDIA'S TRUSTED LABEL MANUFACTURER</span>
               </motion.div>
 
