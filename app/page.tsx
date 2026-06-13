@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -274,10 +274,10 @@ export default function Home() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
+                className="inline-flex items-center gap-2.5 p-1 pr-4 rounded-full bg-white border border-slate-200 text-slate-700 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm"
               >
-                <span>IN</span>
-                <span>INDIA'S TRUSTED LABEL MANUFACTURER</span>
+                <span className="px-2.5 py-1 rounded-full bg-sky-600 text-white font-extrabold text-[9px] sm:text-[10px] tracking-widest shrink-0">IN</span>
+                <span className="text-sky-800 font-extrabold pr-1 tracking-wide">INDIA'S TRUSTED LABEL MANUFACTURER</span>
               </motion.div>
 
               <motion.h1
