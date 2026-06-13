@@ -237,7 +237,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center group shrink-0 relative py-1 px-2.5 bg-white/70 hover:bg-white rounded-2xl border border-slate-100/80 hover:border-sky-300/40 hover:shadow-lg hover:shadow-sky-100/30 transition-all duration-300">
+          <Link href="/" className="-ml-3 flex items-center group shrink-0 relative py-1 px-2.5 bg-white/70 hover:bg-white rounded-2xl border border-slate-100/80 hover:border-sky-300/40 hover:shadow-lg hover:shadow-sky-100/30 transition-all duration-300">
             <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-14 md:h-16 w-auto object-contain group-hover:scale-[1.01] transition-transform duration-200" />
           </Link>
 
