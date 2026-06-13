@@ -35,20 +35,6 @@ const services = [
     icon: Shirt,
     image: "/srv-woven-labels.png",
   },
-  {
-    name: "Stickers & Die-Cuts (Dey Cut)",
-    description: "Self-adhesive stickers, thermal barcodes & custom die-cut labels.",
-    href: "/services#stickers",
-    icon: Settings,
-    image: "/portfolio-sticker-vinyl.png",
-  },
-  {
-    name: "Label Cut & Seal",
-    description: "Automated ultrasonic clean ribbon trimming & frayed-edge sealing.",
-    href: "/services#cut-seal",
-    icon: Settings,
-    image: "/portfolio-tag-satin.png",
-  },
 ];
 
 const articles = [
