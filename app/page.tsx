@@ -254,7 +254,7 @@ export default function Home() {
       <section className="relative pt-24 pb-20 md:pt-32 md:pb-24 overflow-hidden isolate border-b border-slate-100">
         {/* Supporting premium background image */}
         <div 
-          className="absolute inset-0 bg-cover bg-[center_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
+          className="absolute inset-0 bg-cover bg-[58%_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
           style={{ backgroundImage: "url('/hero-background.png')" }}
         />
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
