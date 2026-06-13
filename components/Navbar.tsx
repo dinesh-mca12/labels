@@ -237,8 +237,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo Section */}
-          <Link href="/" className="flex items-center group shrink-0 relative py-1.5 px-3 bg-white/70 hover:bg-white rounded-2xl border border-slate-100/80 hover:border-sky-300/40 hover:shadow-lg hover:shadow-sky-100/30 transition-all duration-300">
-            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 md:h-12 w-auto object-contain group-hover:scale-[1.01] transition-transform duration-200" />
+          <Link href="/" className="flex items-center group shrink-0 relative py-1 px-2.5 bg-white/70 hover:bg-white rounded-2xl border border-slate-100/80 hover:border-sky-300/40 hover:shadow-lg hover:shadow-sky-100/30 transition-all duration-300">
+            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-14 md:h-16 w-auto object-contain group-hover:scale-[1.01] transition-transform duration-200" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -488,7 +488,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)} 
                   className="flex items-center group shrink-0 relative py-1 px-2.5 bg-slate-50 border border-slate-100 rounded-xl"
                 >
-                  <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-8 w-auto object-contain" />
+                  <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-11 w-auto object-contain" />
                 </Link>
                 {/* Spacer block to perfectly align the z-[60] floating close icon that morphs in navbar */}
                 <div className="w-11 h-11 shrink-0" />

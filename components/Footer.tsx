@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Company Info Column */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center group">
-              <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 md:h-12 w-auto object-contain bg-white rounded-lg p-1.5 shadow-md shadow-slate-950/20 group-hover:scale-[1.02] transition-transform duration-200" />
+              <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-16 md:h-18 w-auto object-contain bg-white rounded-lg p-1.5 shadow-md shadow-slate-950/20 group-hover:scale-[1.02] transition-transform duration-200" />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed pt-2">
               State-of-the-art label production and printing solutions. Delivering premium high-precision commercial tags and self-adhesive stickers to international brands.

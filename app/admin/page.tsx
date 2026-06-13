@@ -237,7 +237,7 @@ export default function AdminPage() {
       <header className="bg-white border-b border-slate-200/60 sticky top-0 z-30 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-10 w-auto object-contain" />
+            <img src="/logo.png" alt="Velmurugan Labels Logo" className="h-14 w-auto object-contain" />
             <div className="border-l border-slate-200 pl-3">
               <h1 className="font-extrabold text-slate-800 text-sm tracking-tight leading-none">
                 Admin Panel
