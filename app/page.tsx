@@ -142,13 +142,6 @@ const workGalleryItems = [
     image: "/gallery-work-minymo.png",
   },
   {
-    id: "work-brands",
-    title: "Premium Die-Cut Paperboard Tags",
-    category: "Licensed Brands",
-    description: "Premium die-cut paperboard tags displaying high-fidelity Pantone color consistency, soft-touch matte lamination, and back-side pricing structures.",
-    image: "/gallery-work-brands.png",
-  },
-  {
     id: "work-pret",
     title: "Sports Club Tags & Unique Bottle-Shaped",
     category: "Licensed Brands",
