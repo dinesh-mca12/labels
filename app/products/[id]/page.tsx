@@ -88,11 +88,11 @@ const productsData: Record<string, ProductInfo> = {
     icon: Tag,
     mainImage: "/portfolio-hang-tags.png",
     additionalImages: [
-      "/srv-designing.png",
-      "/portfolio-tag-gold.png",
       "/portfolio-hang-tags.png",
-      "/gallery-fsc-raw-materials.jpg",
-      "/gallery-fsc-storage.jpg"
+      "/hangtag-1.jpg",
+      "/hangtag-2.png",
+      "/hangtag-3.png",
+      "/hangtag-4.jpg"
     ],
     description: "Modern barcode hang tags and premium garment branding accessories designed for retail and export apparel industries. Boost retail shelf-appeal with premium thick cardboards, customized shapes, and luxury hot foil accents.",
     specifications: [
@@ -108,12 +108,12 @@ const productsData: Record<string, ProductInfo> = {
     name: "Price Tags",
     title: "Stylish Barcode Price Cards",
     icon: Tag,
-    mainImage: "/portfolio-hang-tags.png",
+    mainImage: "/pricetag-1.png",
     additionalImages: [
-      "/portfolio-tag-satin.png",
-      "/portfolio-hang-tags.png",
-      "/gallery-fsc-raw-materials.jpg",
-      "/gallery-fsc-storage.jpg"
+      "/pricetag-1.png",
+      "/pricetag-2.png",
+      "/pricetag-3.png",
+      "/pricetag-4.png"
     ],
     description: "Customized retail price cards and barcode labels engineered with point-of-sale barcodes for automated inventory tracking. Tailored to withstand high-volume retail handling.",
     specifications: [
