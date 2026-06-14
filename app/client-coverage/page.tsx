@@ -87,7 +87,7 @@ export default function ClientCoverage() {
     <div className="relative bg-slate-50/50 min-h-screen overflow-hidden isolate">
       
       {/* Soft luxurious background elements */}
-      <div className="absolute inset-0 opacity-[0.012] pointer-events-none -z-10 bg-[linear-gradient(to_right,#20458c_1px,transparent_1px),linear-gradient(to_bottom,#20458c_1px,transparent_1px)] bg-[size:10px_10px]" />
+      <div className="absolute inset-0 opacity-[0.012] pointer-events-none -z-10 bg-[linear-gradient(to_right,#36359b_1px,transparent_1px),linear-gradient(to_bottom,#36359b_1px,transparent_1px)] bg-[size:10px_10px]" />
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-sky-100/30 rounded-full blur-[120px] -z-10 pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/4 w-[600px] h-[600px] bg-indigo-50/20 rounded-full blur-[130px] -z-10 pointer-events-none" />
 
@@ -158,7 +158,7 @@ export default function ClientCoverage() {
                   <path
                     d="M 50 60 Q 65 65 75 70 L 70 85 L 50 110 Z"
                     fill={selectedRegion.id === "tamilnadu" ? "#e1e9f8" : "#f8fafc"}
-                    stroke={selectedRegion.id === "tamilnadu" ? "#20458c" : "#cbd5e1"}
+                    stroke={selectedRegion.id === "tamilnadu" ? "#36359b" : "#cbd5e1"}
                     strokeWidth={selectedRegion.id === "tamilnadu" ? "2.5" : "1"}
                     className="cursor-pointer transition-all duration-300 hover:fill-sky-50/50"
                     onClick={() => setSelectedRegion(regionsData[0])}
@@ -168,7 +168,7 @@ export default function ClientCoverage() {
                   <path
                     d="M 30 50 Q 50 48 55 60 L 45 78 L 32 65 Z"
                     fill={selectedRegion.id === "karnataka" ? "#e1e9f8" : "#f8fafc"}
-                    stroke={selectedRegion.id === "karnataka" ? "#20458c" : "#cbd5e1"}
+                    stroke={selectedRegion.id === "karnataka" ? "#36359b" : "#cbd5e1"}
                     strokeWidth={selectedRegion.id === "karnataka" ? "2.5" : "1"}
                     className="cursor-pointer transition-all duration-300 hover:fill-sky-50/50"
                     onClick={() => setSelectedRegion(regionsData[1])}
@@ -178,7 +178,7 @@ export default function ClientCoverage() {
                   <path
                     d="M 32 65 L 45 78 L 48 110 L 45 110 Z"
                     fill={selectedRegion.id === "kerala" ? "#e1e9f8" : "#f8fafc"}
-                    stroke={selectedRegion.id === "kerala" ? "#20458c" : "#cbd5e1"}
+                    stroke={selectedRegion.id === "kerala" ? "#36359b" : "#cbd5e1"}
                     strokeWidth={selectedRegion.id === "kerala" ? "2.5" : "1"}
                     className="cursor-pointer transition-all duration-300 hover:fill-sky-50/50"
                     onClick={() => setSelectedRegion(regionsData[2])}
@@ -188,7 +188,7 @@ export default function ClientCoverage() {
                   <path
                     d="M 55 25 Q 70 30 85 28 L 75 70 L 50 60 Z"
                     fill={selectedRegion.id === "andhra-telangana" ? "#e1e9f8" : "#f8fafc"}
-                    stroke={selectedRegion.id === "andhra-telangana" ? "#20458c" : "#cbd5e1"}
+                    stroke={selectedRegion.id === "andhra-telangana" ? "#36359b" : "#cbd5e1"}
                     strokeWidth={selectedRegion.id === "andhra-telangana" ? "2.5" : "1"}
                     className="cursor-pointer transition-all duration-300 hover:fill-sky-50/50"
                     onClick={() => setSelectedRegion(regionsData[3])}
@@ -198,7 +198,7 @@ export default function ClientCoverage() {
                   {selectedRegion.id === "tamilnadu" && (
                     <motion.path
                       d="M 53 74 L 68 62" // Tiruppur to Chennai
-                      stroke="#20458c"
+                      stroke="#36359b"
                       strokeWidth="2.5"
                       strokeDasharray="4 4"
                       fill="none"
@@ -210,7 +210,7 @@ export default function ClientCoverage() {
                   {selectedRegion.id === "karnataka" && (
                     <motion.path
                       d="M 53 74 L 43 58" // Tiruppur to Bengaluru
-                      stroke="#20458c"
+                      stroke="#36359b"
                       strokeWidth="2.5"
                       strokeDasharray="4 4"
                       fill="none"
@@ -222,7 +222,7 @@ export default function ClientCoverage() {
                   {selectedRegion.id === "kerala" && (
                     <motion.path
                       d="M 53 74 L 39 90" // Tiruppur to Kochi
-                      stroke="#20458c"
+                      stroke="#36359b"
                       strokeWidth="2.5"
                       strokeDasharray="4 4"
                       fill="none"
@@ -234,7 +234,7 @@ export default function ClientCoverage() {
                   {selectedRegion.id === "andhra-telangana" && (
                     <motion.path
                       d="M 53 74 L 58 40" // Tiruppur to Hyderabad
-                      stroke="#20458c"
+                      stroke="#36359b"
                       strokeWidth="2.5"
                       strokeDasharray="4 4"
                       fill="none"
@@ -245,8 +245,8 @@ export default function ClientCoverage() {
                   )}
 
                   {/* Tiruppur HQ Pointer with ping pulse */}
-                  <circle cx="53" cy="74" r="5.5" fill="#20458c" className="animate-ping" style={{ transformOrigin: "53px 74px" }} />
-                  <circle cx="53" cy="74" r="4" fill="#20458c" />
+                  <circle cx="53" cy="74" r="5.5" fill="#36359b" className="animate-ping" style={{ transformOrigin: "53px 74px" }} />
+                  <circle cx="53" cy="74" r="4" fill="#36359b" />
                   
                   {/* Major Hub Pointers */}
                   <circle cx="43" cy="58" r="3" fill="#64748b" />

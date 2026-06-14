@@ -169,6 +169,17 @@ export default function Services() {
             };
             const srvImage = serviceImages[srv.id] || "/srv-designing.png";
 
+            // Map service ID to dynamic product route hrefs
+            const serviceLinks: Record<string, string> = {
+              "wash-care": "/products/wash-care-labels",
+              "offset-printing": "/products/offset-printing",
+              "hang-tag": "/products/hang-tags",
+              "woven-labels": "/products/woven-labels",
+              "stickers": "/products/stickers",
+              "cut-seal": "/products/cut-seal",
+            };
+            const srvLink = serviceLinks[srv.id] || "/contact";
+
             return (
               <motion.div
                 key={srv.id}
@@ -183,7 +194,7 @@ export default function Services() {
               >
                 {/* Visual Widget Column */}
                 <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"} relative`}>
-                  <div className="aspect-square w-full max-w-sm mx-auto rounded-3xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-200/20">
+                  <Link href={srvLink} className="aspect-square w-full max-w-sm mx-auto rounded-3xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-200/20 cursor-pointer block">
                     {/* Background Service Image with hover zoom */}
                     <div 
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 z-0"
@@ -208,7 +219,7 @@ export default function Services() {
                       <span className="text-[9px] text-sky-400 font-bold uppercase tracking-wider block">Target Capacity</span>
                       <span className="text-xs font-bold text-white mt-1 block">Full-Volume Production Ready</span>
                     </div>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Text Content Column */}
@@ -218,7 +229,9 @@ export default function Services() {
                       Velmurugan Dept
                     </span>
                     <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
-                      {srv.title}
+                      <Link href={srvLink} className="hover:text-sky-600 transition-colors">
+                        {srv.title}
+                      </Link>
                     </h3>
                     <p className="text-sm font-semibold text-slate-600 italic">
                       {srv.tagline}
@@ -251,10 +264,10 @@ export default function Services() {
                       <span className="text-xs font-bold text-slate-800">{srv.industries}</span>
                     </div>
                     <Link
-                      href="/contact"
+                      href={srvLink}
                       className="px-5 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-full font-bold text-xs uppercase tracking-wider shadow-md shadow-sky-100 transition-all flex items-center gap-1.5"
                     >
-                      Inquire Dept
+                      View Details & Video
                       <ArrowRight size={14} />
                     </Link>
                   </div>

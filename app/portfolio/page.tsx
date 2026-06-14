@@ -19,7 +19,7 @@ import {
 interface PortfolioItem {
   id: string;
   title: string;
-  category: "Wash Care Labels" | "Woven Labels" | "Hang Tags" | "Stickers" | "Packaging" | "Production";
+  category: "Wash Care Labels" | "Woven Labels" | "Hang Tags" | "Stickers" | "Packaging" | "Production" | "Photocards" | "Magazines" | "Packing Boxes";
   desc: string;
   spec: string;
   finish: string;
@@ -65,12 +65,12 @@ const portfolioData: PortfolioItem[] = [
   },
   {
     id: "item5",
-    title: "Custom Printed Poly Packaging Covers",
-    category: "Packaging",
-    desc: "Durable transparent and branded poly packaging covers developed for premium apparel packaging solutions.",
-    spec: "Dustproof High-Tensile Recyclable LDPE Covers",
-    finish: "Logo Flexographic Prints & Self-Adhesive Seals",
-    image: "/portfolio-packaging.png",
+    title: "Bespoke Premium Photocards",
+    category: "Photocards",
+    desc: "High-definition custom printed photocards with luxury gloss lamination and rounded corner-cuts.",
+    spec: "350 gsm High-Bulk Premium Art Card",
+    finish: "Dual-Side High Gloss UV Film Curing",
+    image: "/portfolio-photocards.png",
   },
   {
     id: "item6",
@@ -99,6 +99,24 @@ const portfolioData: PortfolioItem[] = [
     finish: "Screen-Printed Washfast High-Density Ink",
     image: "/portfolio-cotton-tape.png",
   },
+  {
+    id: "item9",
+    title: "Elegant Corporate Magazines & Product Catalogues",
+    category: "Magazines",
+    desc: "Professional editorial magazines and product catalogues bound with soft-touch matte finish.",
+    spec: "170 gsm Inner Art Paper, 300 gsm Cover Card",
+    finish: "Perfect-Bound Spine & Soft Matte Lamination",
+    image: "/portfolio-magazines.png",
+  },
+  {
+    id: "item10",
+    title: "Custom Printed Rigid Packing Boxes",
+    category: "Packing Boxes",
+    desc: "Heavy-duty custom branded packing boxes and product shipping carton containers.",
+    spec: "3-Ply Kraft Corrugated Cardboard Boards",
+    finish: "Pantone Flexographic Logo Prints & Matte Contrast",
+    image: "/portfolio-packing-boxes.png",
+  },
 ];
 
 export default function Portfolio() {
@@ -112,7 +130,9 @@ export default function Portfolio() {
     "Woven Labels",
     "Hang Tags",
     "Stickers",
-    "Packaging",
+    "Photocards",
+    "Magazines",
+    "Packing Boxes",
     "Production",
   ];
 

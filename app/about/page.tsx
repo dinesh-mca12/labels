@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -49,7 +49,7 @@ const coreValues = [
 
 const milestones = [
   {
-    year: "2015",
+    year: "2016",
     title: "Company Founded",
     desc: "Velmurugan Labels was established in Tiruppur with a single sheetfed offset press catering to local textile mills.",
   },
@@ -164,6 +164,74 @@ const gallerySlides = [
   },
 ];
 
+const liveFeeds = [
+  {
+    id: "rotary-press",
+    video: "/v1.mp4",
+    department: "Primary Press Sector",
+    title: "High-Speed Rotary Apparel Care Tag Lines",
+    description: "Our high-speed rotary printing system operates continuously to supply luxury garment care cards, woven tags, and double-sided self-adhesive labels for major clothing exporter hubs. Runs up to 120 meters per minute with precision registration control.",
+    specs: [
+      { label: "Rated Speed", value: "120 m/min" },
+      { label: "Material Input", value: "Satin / Woven" },
+      { label: "Ink Quality", value: "OEKO-TEX Washproof" },
+      { label: "Max Width", value: "220 mm Web" },
+    ]
+  },
+  {
+    id: "label-weaving",
+    video: "/v3.mp4",
+    department: "Woven Brand Badges",
+    title: "High-Density Computerized Damask Looms",
+    description: "Computerized jacquard looms interlacing ultra-fine 50D polyester threads to create luxury clothing neck labels, woven size loops, and custom brand patches with extreme graphic detail.",
+    specs: [
+      { label: "Thread Count", value: "50 Denier Damask" },
+      { label: "Loom Speed", value: "650 RPM" },
+      { label: "Warp Setup", value: "Fine Polyester Yarns" },
+      { label: "Loom Capacity", value: "12 Ribbons Parallel" },
+    ]
+  },
+  {
+    id: "cutting-sealing",
+    video: "/v4.mp4",
+    department: "Post-Press Finishing",
+    title: "Ultrasonic Label Cutting & End-Folding",
+    description: "State-of-the-art ultrasonic warm-blade cutting systems that trim and seal polyester satin labels. Melts borders instantly to yield soft, smooth, non-scratchy edges for neck contact.",
+    specs: [
+      { label: "Trim Speed", value: "150 labels/min" },
+      { label: "Heat Setting", value: "Micro-Calibrated" },
+      { label: "Accuracy", value: "±0.1 mm Tolerance" },
+      { label: "Fold Option", value: "End-Fold / Loop-Fold" },
+    ]
+  },
+  {
+    id: "offset-packaging",
+    video: "/v5.mp4",
+    department: "Cardboard Packaging",
+    title: "Ryobi Multi-Color Press & Die-Cutter",
+    description: "Multi-color sheetfed offset presses running high-volume prints for paperboard apparel hang tags, price cards, and custom-designed rigid packaging boxes with Pantone calibration.",
+    specs: [
+      { label: "Press Capacity", value: "10,000 sheets/hr" },
+      { label: "Paper Weight", value: "180 to 450 gsm" },
+      { label: "Registration", value: "Laser-Aligned Spot" },
+      { label: "Finishing Mode", value: "Online Matte Varnish" },
+    ]
+  },
+  {
+    id: "dtf-transfers",
+    video: "/v6.mp4",
+    department: "Heat Transfer Curing",
+    title: "Vibrant DTF Print & Powder Curing Lines",
+    description: "Industrial Direct-to-Film transfer systems printing elastomeric inks onto PET release films, integrated with automated powder-shake curing lines for flexible washproof transfers.",
+    specs: [
+      { label: "Transfer Temp", value: "150°C - 160°C" },
+      { label: "Stretch Limit", value: "High-Elastomer" },
+      { label: "Wash Rating", value: "50+ Home Cycles" },
+      { label: "Resolution", value: "2400 dpi Precision" },
+    ]
+  }
+];
+
 const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? "100%" : "-100%",
@@ -195,6 +263,7 @@ export default function About() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
   const [lightboxSlide, setLightboxSlide] = useState<number | null>(null);
+  const [activeFeedIndex, setActiveFeedIndex] = useState(0);
 
   // Auto-play interval
   useEffect(() => {
@@ -245,7 +314,7 @@ export default function About() {
             </span>
           </h1>
           <p className="text-slate-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed font-medium">
-            Headquartered in Tiruppur, Tamil Nadu, Velmurugan Labels has been the premier partner for commercial apparel tags, barcode sticker rolls, luxury spot-UV screen prints, and premium offset packaging since 2015.
+            Headquartered in Tiruppur, Tamil Nadu, Velmurugan Labels has been the premier partner for commercial apparel tags, barcode sticker rolls, luxury spot-UV screen prints, and premium offset packaging since 2016.
           </p>
         </div>
       </section>
@@ -434,7 +503,7 @@ export default function About() {
         {/* Glow */}
         <div className="absolute top-1/2 right-[10%] w-[350px] h-[350px] bg-sky-100/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           {/* Header Title with Live Pulse */}
           <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -450,210 +519,149 @@ export default function About() {
             </p>
           </div>
 
-          {/* Featured Widescreen Showcase - Video 1 */}
-          <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-slate-200/60 shadow-xl overflow-hidden hover:border-sky-200/50 transition-all duration-300">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-              {/* Video Player */}
-              <div className="lg:col-span-7 relative bg-slate-950 aspect-video lg:aspect-auto min-h-[300px] lg:min-h-[420px] flex items-center justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200/50">
+          {/* Featured Widescreen Showcase Container */}
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl border border-slate-200/60 shadow-xl overflow-hidden hover:border-sky-200/50 transition-all duration-300 lg:h-[480px]">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 h-full">
+              
+              {/* Video Player (Interactive Slider Setup) */}
+              <div className="lg:col-span-7 relative bg-slate-950 aspect-video lg:aspect-auto h-full min-h-[300px] lg:min-h-0 flex items-center justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-200/50 group/video">
+                
+                {/* Live Status Badge */}
                 <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[10px] font-bold text-sky-400 uppercase tracking-widest">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Featured Line Feed
+                  Live feed: {liveFeeds[activeFeedIndex].department}
                 </div>
+
+                {/* Video Tag (Dynamic Key to force reload and autoplay on slide change) */}
                 <video 
+                  key={liveFeeds[activeFeedIndex].video}
                   className="w-full h-full object-cover"
                   autoPlay 
                   loop 
                   muted 
                   playsInline
                 >
-                  <source src="/v1.mp4" type="video/mp4" />
+                  <source src={liveFeeds[activeFeedIndex].video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+
+                {/* Overlay Prev/Next Arrow Buttons */}
+                <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-20 flex justify-between opacity-0 group-hover/video:opacity-100 transition-opacity duration-300">
+                  <button
+                    onClick={() => {
+                      setActiveFeedIndex((prev) => (prev === 0 ? liveFeeds.length - 1 : prev - 1));
+                    }}
+                    className="w-10 h-10 rounded-full bg-slate-950/70 border border-white/10 text-white flex items-center justify-center hover:bg-slate-900 hover:scale-105 transition-all active:scale-95 cursor-pointer shadow-lg"
+                    title="Previous Department Feed"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setActiveFeedIndex((prev) => (prev === liveFeeds.length - 1 ? 0 : prev + 1));
+                    }}
+                    className="w-10 h-10 rounded-full bg-slate-950/70 border border-white/10 text-white flex items-center justify-center hover:bg-slate-900 hover:scale-105 transition-all active:scale-95 cursor-pointer shadow-lg"
+                    title="Next Department Feed"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
+
+                {/* Progress Indicators overlay */}
+                <div className="absolute bottom-4 right-4 z-20 flex gap-1 bg-slate-950/60 px-2.5 py-1.5 rounded-full border border-white/10">
+                  {liveFeeds.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveFeedIndex(idx)}
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                        idx === activeFeedIndex ? "bg-sky-400 w-3" : "bg-white/40 hover:bg-white/65"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
 
-              {/* Text Spec Panel */}
-              <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between space-y-6 text-left">
-                <div className="space-y-4">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold text-sky-600 uppercase tracking-widest">
-                    <Cpu size={12} />
-                    Primary Press Sector
-                  </span>
-                  <h3 className="text-2xl font-black text-slate-800 tracking-tight leading-tight">
-                    High-Speed Rotary Apparel Care Tag Lines
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                    Our high-speed rotary printing system operates continuously to supply luxury garment care cards, woven tags, and double-sided self-adhesive labels for major clothing exporter hubs. Runs up to 120 meters per minute with precision registration control.
-                  </p>
-                </div>
+              {/* Text Spec Panel (Transition Animation support) */}
+              <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6 text-left h-full">
+                
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeFeedIndex}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-sky-600 uppercase tracking-widest bg-sky-50 px-2.5 py-1 rounded-full border border-sky-100">
+                      <Cpu size={12} className="animate-spin" style={{ animationDuration: '4s' }} />
+                      {liveFeeds[activeFeedIndex].department}
+                    </span>
+                    <h3 className="text-2xl font-black text-slate-800 tracking-tight leading-tight">
+                      {liveFeeds[activeFeedIndex].title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed min-h-[90px]">
+                      {liveFeeds[activeFeedIndex].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
 
-                <div className="space-y-4 pt-4 border-t border-slate-100">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
-                    Active Calibration Parameters
-                  </span>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
-                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Rated Speed</span>
-                      <span className="text-xs font-bold text-slate-700">120 m/min</span>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`specs-${activeFeedIndex}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4 pt-4 border-t border-slate-100"
+                  >
+                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
+                      Active Calibration Parameters
+                    </span>
+                    <div className="grid grid-cols-2 gap-3">
+                      {liveFeeds[activeFeedIndex].specs.map((spec, index) => (
+                        <div key={index} className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
+                          <span className="block text-[9px] text-slate-400 font-bold uppercase">{spec.label}</span>
+                          <span className="text-xs font-bold text-slate-700 block mt-0.5">{spec.value}</span>
+                        </div>
+                      ))}
                     </div>
-                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
-                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Material Input</span>
-                      <span className="text-xs font-bold text-slate-700">Satin / Woven</span>
-                    </div>
-                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
-                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Ink Quality</span>
-                      <span className="text-xs font-bold text-slate-700">OEKO-TEX Washproof</span>
-                    </div>
-                    <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 text-left">
-                      <span className="block text-[10px] text-slate-400 font-bold uppercase">Max Width</span>
-                      <span className="text-xs font-bold text-slate-700">220 mm Web</span>
-                    </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </AnimatePresence>
+
               </div>
             </div>
           </div>
 
-          {/* Enhanced Machinery Showcase Container */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="relative p-1 rounded-[38px] bg-gradient-to-tr from-slate-200/40 via-white to-sky-200/30 shadow-2xl border border-white/40"
-          >
-            <div className="bg-slate-50/40 backdrop-blur-md rounded-[36px] p-6 md:p-10 border border-white/80 relative overflow-hidden">
-              
-              {/* Glowing decorative background orb */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-sky-400/5 blur-[90px] rounded-full pointer-events-none -z-10 animate-pulse" />
-              
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                
-                {/* Card 1 - Advanced Digital Press */}
-                <motion.div 
-                  variants={cardVariants}
-                  className="bg-white/90 backdrop-blur-md rounded-[28px] border border-slate-200/50 hover:border-sky-300/40 hover:shadow-2xl hover:shadow-sky-100/35 hover:-translate-y-2 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full group text-left"
+          {/* Department Thumbnail Selector Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-5xl mx-auto pt-2">
+            {liveFeeds.map((feed, index) => {
+              const isActive = index === activeFeedIndex;
+              return (
+                <button
+                  key={feed.id}
+                  onClick={() => setActiveFeedIndex(index)}
+                  className={`group text-left p-3.5 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                    isActive
+                      ? "bg-white border-sky-400 shadow-md shadow-sky-100/40 translate-y-[-2px]"
+                      : "bg-white/40 border-slate-200/60 hover:bg-white/80 hover:border-slate-300"
+                  }`}
                 >
-                  <div className="relative aspect-[16/10.5] bg-slate-900 overflow-hidden border-b border-slate-100">
-                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      VDP Print Run
-                    </div>
-                    <video 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline
-                    >
-                      <source src="/v2.mp4" type="video/mp4" />
-                    </video>
+                  <span className={`text-[9px] font-bold tracking-wider ${isActive ? "text-sky-600" : "text-slate-400 group-hover:text-slate-500"}`}>
+                    FEED 0{index + 1}
+                  </span>
+                  <h4 className="text-xs font-extrabold text-slate-800 line-clamp-2 mt-1 min-h-[32px] leading-tight">
+                    {feed.title.replace("High-Speed ", "").replace("High-Density ", "").replace("Computerized ", "").replace("Ultrasonic ", "").replace("Vibrant ", "")}
+                  </h4>
+                  <div className="flex justify-between items-center mt-3 pt-2 border-t border-slate-100/60 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+                    <span>Active</span>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isActive ? "bg-emerald-500 animate-pulse" : "bg-slate-300"}`} />
                   </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <h4 className="text-base font-extrabold text-slate-800 group-hover:text-sky-600 transition-colors duration-250">Advanced Digital Press Line</h4>
-                      </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        Variable Data Printing (VDP) enabling micro-variable barcodes, QR codes, and bespoke label designs without plates or startup times.
-                      </p>
-                    </div>
-                    <div className="space-y-3 pt-3 border-t border-slate-100">
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">
-                        <span>CAPACITY: 80m/min</span>
-                        <span>TECH: ElectroInk</span>
-                      </div>
-                      <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
-                        Digital Sticker Roll
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
+                </button>
+              );
+            })}
+          </div>
 
-                {/* Card 2 - Label Cut & Fold */}
-                <motion.div 
-                  variants={cardVariants}
-                  className="bg-white/90 backdrop-blur-md rounded-[28px] border border-slate-200/50 hover:border-sky-300/40 hover:shadow-2xl hover:shadow-sky-100/35 hover:-translate-y-2 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full group text-left"
-                >
-                  <div className="relative aspect-[16/10.5] bg-slate-900 overflow-hidden border-b border-slate-100">
-                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Ultrasonic Fold
-                    </div>
-                    <video 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline
-                    >
-                      <source src="/v5.mp4" type="video/mp4" />
-                    </video>
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <h4 className="text-base font-extrabold text-slate-800 group-hover:text-sky-600 transition-colors duration-250">Label Cut & Fold Line</h4>
-                      </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        Automated high-speed label cutting and center-folding line utilizing clean ultrasonic heat-sealing loops to prevent frayed edges on satin wash care and woven brand tags.
-                      </p>
-                    </div>
-                    <div className="space-y-3 pt-3 border-t border-slate-100">
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">
-                        <span>CYCLES: 180 pcs/min</span>
-                        <span>FOLD: Center / End</span>
-                      </div>
-                      <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
-                        Ultrasonic Heat-Seal
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Card 3 - QA Quality Inspection */}
-                <motion.div 
-                  variants={cardVariants}
-                  className="bg-white/90 backdrop-blur-md rounded-[28px] border border-slate-200/50 hover:border-sky-300/40 hover:shadow-2xl hover:shadow-sky-100/35 hover:-translate-y-2 transition-all duration-300 overflow-hidden flex flex-col justify-between h-full group text-left"
-                >
-                  <div className="relative aspect-[16/10.5] bg-slate-900 overflow-hidden border-b border-slate-100">
-                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-[9px] font-bold text-sky-400 uppercase tracking-widest">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      QA Camera Check
-                    </div>
-                    <video 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
-                      autoPlay 
-                      loop 
-                      muted 
-                      playsInline
-                    >
-                      <source src="/v7.mp4" type="video/mp4" />
-                    </video>
-                  </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-5">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <h4 className="text-base font-extrabold text-slate-800 group-hover:text-sky-600 transition-colors duration-250">100% Quality Inspection Line</h4>
-                      </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
-                        High-resolution linear sensor cameras performing optical character verification (OCV) and micro-defect detection in active cutting operations.
-                      </p>
-                    </div>
-                    <div className="space-y-3 pt-3 border-t border-slate-100">
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">
-                        <span>CAMERA: 4K Linear</span>
-                        <span>ACCURACY: 99.99%</span>
-                      </div>
-                      <span className="inline-flex self-start px-2 py-0.5 rounded bg-slate-100 text-[9px] font-bold text-slate-500 uppercase tracking-wider">
-                        Zero Defects
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 

@@ -84,9 +84,21 @@ const products = [
     icon: Settings,
   },
   {
-    name: "Custom Poly Packaging",
-    description: "Custom printed transparent LDPE bags & organic eco-bio poly covers.",
-    href: "/products/poly-packaging",
+    name: "Premium Photocards",
+    description: "High-quality photographic prints and bespoke design cards.",
+    href: "/products/photocards",
+    icon: Tag,
+  },
+  {
+    name: "Magazines & Catalogues",
+    description: "High-grade editorial print spreads and company profiles.",
+    href: "/products/magazines",
+    icon: FileText,
+  },
+  {
+    name: "Custom Packing Boxes",
+    description: "Customized rigid packing boxes, carton boards and mailers.",
+    href: "/products/packing-boxes",
     icon: Package,
   },
   {
@@ -101,7 +113,7 @@ const navItems = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services", hasDropdown: "services" },
-  { name: "Products", href: "/portfolio", hasDropdown: "products" },
+  { name: "Products", href: "/products" },
   { name: "Articles", href: "/#articles", hasDropdown: "articles" },
   { name: "Industries", href: "/industries" },
   { name: "Client Coverage", href: "/client-coverage" },

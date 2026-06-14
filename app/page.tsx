@@ -63,11 +63,11 @@ const homeServices = [
     icon: Layers,
   },
   {
-    title: "Custom Poly Packaging Solutions",
-    desc: "Transparent garment packaging covers and eco-friendly protective bags manufactured for modern apparel industries.",
-    href: "/products/poly-packaging",
-    tag: "Packaging",
-    icon: Package,
+    title: "Premium Brand Photocards",
+    desc: "Bespoke custom photocards and brand cards printed with premium finishes, glossy laminations, and rounded edge-cuts.",
+    href: "/products/photocards",
+    tag: "Brand Merchandise",
+    icon: Tag,
   },
   {
     title: "Precision Label Cutting & Sealing",
@@ -138,49 +138,49 @@ const testimonials = [
 const workGalleryItems = [
   {
     id: "work-minymo",
-    title: "Minymo Organic Cotton Board Tag",
+    title: "Organic Cotton Board Tag",
     category: "Eco & Organic",
     description: "FSC-certified biodegradable raw board tag with customized debossed brand printing and organic cotton hanger threads, fabricated for sustainable Scandinavian export fashion.",
     image: "/gallery-work-minymo.png",
   },
   {
     id: "work-brands",
-    title: "Color Kids & Pokemon Luxury Tags",
+    title: "Premium Die-Cut Paperboard Tags",
     category: "Licensed Brands",
     description: "Premium die-cut paperboard tags displaying high-fidelity Pantone color consistency, soft-touch matte lamination, and integrated security barcodes.",
     image: "/gallery-work-brands.png",
   },
   {
     id: "work-pret",
-    title: "FC Barcelona & Pret Recycled Tags",
+    title: "Sports Club Tags & Unique Bottle-Shaped",
     category: "Licensed Brands",
     description: "Licensed sports club tags and unique bottle-shaped Pret 100% recycled fabric certifications, made under stringent anti-counterfeit print controls.",
     image: "/gallery-work-pret.png",
   },
   {
     id: "work-cartoons",
-    title: "Nickelodeon Garfield & Smurfs Tags",
+    title: "Glossy High-Saturation Spot Varnish Finish",
     category: "Licensed Brands",
     description: "Nickelodeon certified vector graphics, glossy high-saturation spot varnish finish, and back-side pricing structures printed for global youth wear collections.",
     image: "/gallery-work-cartoons.png",
   },
   {
     id: "work-kids",
-    title: "PAW Patrol & Rubble Custom Shields",
+    title: "Labels Featuring Rich Glossy Seal Coats",
     category: "Licensed Brands",
     description: "Intricately die-cut shield profiles and cartoon merchandise labels featuring rich glossy seal coats and high-grade safety grommets.",
     image: "/gallery-work-kids.png",
   },
   {
     id: "work-ramraj",
-    title: "Ramraj & Blue Moon Satin Care Labels",
+    title: "Wash Care Labels",
     category: "Wash Care & Woven",
     description: "Export-grade ultra-soft satin wash care labels printed with high-density wash-resistant ink in multiple languages (English, French, Spanish) for premier shirt brands.",
     image: "/gallery-work-ramraj.jpg",
   },
   {
     id: "work-decathlon",
-    title: "Decathlon & Point Cove Custom Wash Labels",
+    title: "Professional High-Density Woven Neck Labels",
     category: "Wash Care & Woven",
     description: "Professional high-density woven neck labels and multi-language wash instruction ribbons with integrated safety barcodes and Decathlon compliance standards.",
     image: "/gallery-work-decathlon.jpg",
@@ -201,7 +201,49 @@ const workGalleryItems = [
   },
 ];
 
+const heroSlides = [
+  {
+    image: "/ihs1.png",
+    description: "Factory & Infrastructure",
+    title: "Premium Manufacturing Facility",
+    details: "Our modern production floor in Tiruppur features advanced flexographic and digital printing machines running at full capacity to ensure export-quality manufacturing.",
+  },
+  {
+    image: "/ihs2.png",
+    description: "Quality Inspection",
+    title: "Precision Quality Inspection",
+    details: "Every garment label, woven badge, wash care ribbon, and hang tag undergoes rigorous testing and multi-stage manual inspections for absolute alignment and accuracy.",
+  },
+  {
+    image: "/ihs3.png",
+    description: "Label Products",
+    title: "Garment Labels in Production",
+    details: "Premium woven labels and retail brand tags are crafted using high-density threading and premium substrates to elevate luxury apparel branding.",
+  },
+  {
+    image: "/ihs4.png",
+    description: "Production Tech",
+    title: "Printing & Packaging Process",
+    details: "Advanced automated production lines process large rolls of self-adhesive stickers, barcode rolls, cotton tapes, and shipping containers.",
+  },
+  {
+    image: "/ihs5.png",
+    description: "Finished & Delivery",
+    title: "Finished Products & Delivery",
+    details: "Completed orders are consolidated, professionally packed to international standards, and dispatched for swift logistics to domestic and global clients.",
+  },
+];
+
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -250,24 +292,33 @@ export default function Home() {
 
   return (
     <div className="relative overflow-hidden bg-slate-50/50">
-      
-      <section className="relative pt-24 pb-20 md:pt-32 md:pb-24 overflow-hidden isolate border-b border-slate-100">
-        {/* Supporting premium background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-[58%_62%] -z-20 opacity-90 transition-all duration-700 ease-in-out"
-          style={{ backgroundImage: "url('/hero-background.png')" }}
-        />
+
+      <section className="relative pt-16 pb-16 md:pt-20 md:pb-20 overflow-hidden isolate border-b border-slate-100">
+        {/* Supporting premium background slider */}
+        <div className="absolute inset-0 -z-20 overflow-hidden bg-white">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={activeSlide}
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 0.8, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 bg-cover bg-[58%_62%] transform-gpu"
+              style={{ backgroundImage: `url('${heroSlides[activeSlide].image}')` }}
+            />
+          </AnimatePresence>
+        </div>
         {/* Solid & smooth light glassmorphism/gradient overlays for perfect readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/90 to-white lg:hidden -z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/98 via-white/70 to-transparent hidden lg:block -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white lg:hidden -z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent hidden lg:block -z-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-sky-50/10 via-transparent to-white -z-10" />
 
         {/* Dynamic mesh background grid with matching soft slate rules */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-70 -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-6 md:py-12">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2 pb-6 md:pt-2 md:pb-12">
+
             {/* Left Column Content */}
             <div className="lg:col-span-7 space-y-6 text-left flex flex-col items-start justify-center">
               <motion.div
@@ -359,10 +410,97 @@ export default function Home() {
                   </span>
                 </Link>
               </motion.div>
+
+              {/* Production Journey Progress Timeline */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="w-full pt-6 border-t border-slate-200/50 mt-6"
+              >
+                <span className="text-[10px] font-black text-sky-600 tracking-widest uppercase block mb-3">
+                  PRODUCTION JOURNEY STORY
+                </span>
+                <div className="grid grid-cols-5 gap-2 w-full">
+                  {heroSlides.map((slide, idx) => {
+                    const isActive = activeSlide === idx;
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveSlide(idx)}
+                        className="flex flex-col text-left group focus:outline-none cursor-pointer"
+                      >
+                        {/* Progress line */}
+                        <div className="w-full bg-slate-200/60 h-1 rounded-full overflow-hidden mb-2 relative">
+                          {isActive ? (
+                            <motion.div
+                              key={`progress-${activeSlide}`}
+                              className="bg-sky-600 h-full w-full absolute left-0 top-0 origin-left"
+                              initial={{ scaleX: 0 }}
+                              animate={{ scaleX: 1 }}
+                              transition={{ duration: 6, ease: "linear" }}
+                            />
+                          ) : idx < activeSlide ? (
+                            <div className="bg-sky-600 h-full w-full absolute left-0 top-0" />
+                          ) : null}
+                        </div>
+                        {/* Slide tag / name */}
+                        <span className={`text-[9px] font-black uppercase tracking-wider transition-colors duration-300 ${isActive ? "text-sky-600 font-extrabold" : "text-slate-400 group-hover:text-slate-500"
+                          }`}>
+                          {`0${idx + 1}`}
+                        </span>
+                        <span className={`text-[10px] font-extrabold leading-tight transition-colors duration-300 hidden md:block ${isActive ? "text-slate-900" : "text-slate-500 group-hover:text-slate-700"
+                          }`}>
+                          {slide.description}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </motion.div>
             </div>
 
-            {/* Right empty column on desktop to let the custom background image show beautifully */}
-            <div className="hidden lg:block lg:col-span-5" />
+            {/* Right column - Production Journey Card */}
+            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end w-full mt-8 lg:mt-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full max-w-sm bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-3xl p-6 shadow-xl shadow-slate-900/5 relative overflow-hidden group hover:border-sky-300/40 transition-all duration-300"
+                >
+                  {/* Subtle top decoration line using brand colors */}
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 to-indigo-600" />
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[10px] font-black text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        {`STAGE 0${activeSlide + 1}`}
+                      </span>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                        {`0${activeSlide + 1} / 05`}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h3 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                        {heroSlides[activeSlide].title}
+                      </h3>
+                      <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                        {heroSlides[activeSlide].details}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                      <span>Velmurugan Labels</span>
+                      <span className="text-sky-600 font-extrabold">Tiruppur, India</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
           </div>
 
@@ -383,9 +521,8 @@ export default function Home() {
               ].map((stat, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-center gap-4 flex-1 justify-center md:justify-start ${
-                    idx > 0 ? "md:border-l md:border-white/20 md:pl-6 lg:pl-10" : ""
-                  } ${idx > 0 ? "border-t border-white/10 pt-4 md:border-t-0 md:pt-0" : ""}`}
+                  className={`flex items-center gap-4 flex-1 justify-center md:justify-start ${idx > 0 ? "md:border-l md:border-white/20 md:pl-6 lg:pl-10" : ""
+                    } ${idx > 0 ? "border-t border-white/10 pt-4 md:border-t-0 md:pt-0" : ""}`}
                 >
                   <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center shrink-0">
                     <stat.icon className="w-6 h-6 text-white stroke-[1.5]" />
@@ -403,12 +540,12 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* 3. Product Categories Grid (8 Cards) directly below the Stats Bar */}
+          {/* 3. Product Categories Grid (10 Cards) directly below the Stats Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-8 relative z-20 pb-4"
+            className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-3 mt-8 relative z-20 pb-4"
           >
             {[
               {
@@ -437,9 +574,9 @@ export default function Home() {
                 href: "/products/stickers",
               },
               {
-                name: "POLY PACKAGING",
-                image: "/portfolio-packaging.png",
-                href: "/products/poly-packaging",
+                name: "PHOTOCARD",
+                image: "/portfolio-photocards.png",
+                href: "/products/photocards",
               },
               {
                 name: "COTTON TAPES",
@@ -450,6 +587,16 @@ export default function Home() {
                 name: "DTF STICKERS",
                 image: "/portfolio-dtf-stickers.png",
                 href: "/products/dtf-stickers",
+              },
+              {
+                name: "MAGAZINES",
+                image: "/portfolio-magazines.png",
+                href: "/products/magazines",
+              },
+              {
+                name: "PACKING BOX",
+                image: "/portfolio-packing-boxes.png",
+                href: "/products/packing-boxes",
               },
             ].map((prod, idx) => (
               <Link
@@ -483,7 +630,7 @@ export default function Home() {
         <div className="absolute bottom-1/3 right-1/10 w-[450px] h-[450px] bg-indigo-50/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-12">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-bold text-sky-600 uppercase tracking-widest">
@@ -504,11 +651,10 @@ export default function Home() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border cursor-pointer ${
-                  activeCategory === cat
+                className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border cursor-pointer ${activeCategory === cat
                     ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-950/10 scale-105"
                     : "bg-white/80 backdrop-blur-md border-slate-200 text-slate-650 hover:bg-slate-50 hover:border-slate-350"
-                }`}
+                  }`}
               >
                 {cat}
               </button>
@@ -544,7 +690,7 @@ export default function Home() {
                         <Maximize2 size={16} />
                       </div>
                     </div>
-                    
+
                     {/* Category Label Overlay */}
                     <div className="absolute top-3 left-3">
                       <span className="px-2.5 py-0.5 text-[9px] font-bold text-white uppercase tracking-widest bg-slate-950/60 backdrop-blur-md border border-white/10 rounded-full">
@@ -650,16 +796,16 @@ export default function Home() {
 
       {/* 3. Services Preview */}
       <section className="py-24 bg-gradient-to-b from-white via-slate-50/10 to-white relative overflow-hidden isolate border-b border-slate-100">
-        
+
         {/* Subtle Textile Texture Background Layer */}
         <div className="absolute inset-0 opacity-[0.015] pointer-events-none -z-10 bg-[linear-gradient(to_right,#20458c_1px,transparent_1px),linear-gradient(to_bottom,#20458c_1px,transparent_1px)] bg-[size:8px_8px]" />
-        
+
         {/* Soft glowing ambient orbs */}
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-sky-100/30 rounded-full blur-[110px] -z-10 pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-50/30 rounded-full blur-[110px] -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-20">
             <motion.span
@@ -672,7 +818,7 @@ export default function Home() {
               <Sparkles size={12} className="stroke-[2.5]" />
               Capabilities
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -682,7 +828,7 @@ export default function Home() {
             >
               Advanced Textile Label <br className="hidden sm:inline" /> Manufacturing Solutions
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -748,7 +894,7 @@ export default function Home() {
 
       {/* 4. Production Workflow Section */}
       <section className="py-24 bg-slate-50/30 relative overflow-hidden isolate border-b border-slate-100">
-        
+
         {/* Soft luxurious industrial background layers */}
         {/* 1. Subtle grid lines background overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-70 -z-10 pointer-events-none" />
@@ -759,7 +905,7 @@ export default function Home() {
         <div className="absolute bottom-0 right-10 w-[300px] h-[300px] bg-indigo-50/35 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto space-y-4 mb-24">
             <motion.span
@@ -772,7 +918,7 @@ export default function Home() {
               <Sparkles size={12} className="stroke-[2.5]" />
               EXECUTION PIPELINE
             </motion.span>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -783,7 +929,7 @@ export default function Home() {
               Precision Manufacturing <br />
               <span className="text-sky-600">Workflow Engineered</span> for Global Quality
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -797,7 +943,7 @@ export default function Home() {
 
           {/* Interactive Connected Timeline Layout */}
           <div className="relative">
-            
+
             {/* Horizontal Timeline Connector Path for Desktop (lg screens) */}
             <div className="hidden lg:block absolute top-[90px] left-[5%] right-[5%] h-[4px] bg-slate-200/60 -z-10 rounded-full overflow-hidden">
               <motion.div
@@ -828,7 +974,7 @@ export default function Home() {
               {workflowSteps.map((step, idx) => {
                 const IconComp = step.icon;
                 const isCenter = idx === 2; // Precision Production center feature card
-                
+
                 return (
                   <motion.div
                     key={step.num}
@@ -836,13 +982,12 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.15 }}
-                    className={`group relative flex flex-col justify-between p-8 sm:p-9 bg-white/95 backdrop-blur-md rounded-[32px] border ${
-                      isCenter
+                    className={`group relative flex flex-col justify-between p-8 sm:p-9 bg-white/95 backdrop-blur-md rounded-[32px] border ${isCenter
                         ? "border-sky-400/35 shadow-xl shadow-sky-900/5 lg:scale-[1.05] lg:z-20 bg-gradient-to-b from-white to-sky-50/10"
                         : "border-slate-200/50 shadow-[0_8px_30px_rgba(0,0,0,0.015)]"
-                    } hover:-translate-y-3 hover:border-sky-300/60 hover:shadow-2xl hover:shadow-sky-100/40 transition-all duration-500`}
+                      } hover:-translate-y-3 hover:border-sky-300/60 hover:shadow-2xl hover:shadow-sky-100/40 transition-all duration-500`}
                   >
-                    
+
                     {/* Layered Card Background Enhancements */}
                     {/* Step 1: Technical Consultation specifications sheet blueprint details */}
                     {idx === 0 && (
@@ -894,11 +1039,10 @@ export default function Home() {
                         <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:rotate-6">
                           <IconComp size={20} className="stroke-[2.2]" />
                         </div>
-                        <div className={`text-sm font-black px-3 py-1 rounded-full ${
-                          isCenter
+                        <div className={`text-sm font-black px-3 py-1 rounded-full ${isCenter
                             ? "bg-sky-600 text-white shadow-md shadow-sky-100 animate-pulse"
                             : "bg-slate-100 text-slate-500"
-                        } tracking-wide`}>
+                          } tracking-wide`}>
                           {step.num}
                         </div>
                       </div>
@@ -940,7 +1084,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            
+
             <div className="space-y-6">
               <span className="text-xs font-bold text-sky-600 uppercase tracking-widest">
                 Our Edge
@@ -1086,7 +1230,7 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-            
+
             {/* Form Side */}
             <div className="lg:col-span-7 bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-slate-200/50 shadow-xl shadow-slate-100/50 relative overflow-hidden group hover:border-sky-200/50 transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -1218,7 +1362,7 @@ export default function Home() {
 
             {/* Address & Direct Dial Side */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-6 relative">
-              
+
               {/* Facility Card */}
               <div className="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-8 space-y-6 flex-grow flex flex-col justify-center border border-slate-800 shadow-xl shadow-slate-900/10 hover:border-slate-700 transition-all duration-300 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -1226,12 +1370,12 @@ export default function Home() {
                   Our Headquarters
                 </span>
                 <h3 className="text-xl font-bold relative z-10">Velmurugan Labels</h3>
-                
+
                 <ul className="space-y-4 text-slate-300 text-sm relative z-10">
                   <li className="flex gap-3 items-start">
                     <MapPin size={18} className="text-sky-400 shrink-0 mt-0.5" />
                     <span>
-                      Laxmi Nagar, Ram Nagar,<br/>
+                      Laxmi Nagar, Ram Nagar,<br />
                       Tiruppur, Tamil Nadu 641602
                     </span>
                   </li>
