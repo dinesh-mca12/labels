@@ -45,11 +45,11 @@ const productsData: Record<string, ProductInfo> = {
     icon: Printer,
     mainImage: "/portfolio-wash-care.png",
     additionalImages: [
-      "/srv-wash-care.png",
-      "/portfolio-tag-satin.png",
-      "/portfolio-wash-care.png",
-      "/gallery-oeko-tex-raw-materials.jpg",
-      "/gallery-trust-quality.png"
+      "/washcare-1.png",
+      "/washcare-2.png",
+      "/washcare-3.png",
+      "/washcare-4.png",
+      "/washcare-5.png"
     ],
     description: "High-quality satin and cotton wash care labels designed for export garment manufacturing with durable print precision. Our care tags are engineered to resist fading across thousands of washing cycles, matching strict garment compliance regulations for skin contact.",
     specifications: [
@@ -67,10 +67,10 @@ const productsData: Record<string, ProductInfo> = {
     icon: Shirt,
     mainImage: "/portfolio-woven-labels.png",
     additionalImages: [
-      "/srv-woven-labels.png",
       "/portfolio-woven-labels.png",
-      "/gallery-cutting-machine.png",
-      "/officearea.png"
+      "/woven-labels-1.png",
+      "/woven-labels-2.png",
+      "/woven-labels-3.png"
     ],
     description: "Premium woven branding labels crafted for luxury fashion garments with long-lasting durability and elegant texture. Unlike printed tags, woven labels are created by interlacing premium damask threads to form your brand emblem directly inside the weave.",
     specifications: [
