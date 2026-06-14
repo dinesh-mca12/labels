@@ -166,68 +166,68 @@ const gallerySlides = [
 
 const liveFeeds = [
   {
-    id: "rotary-press",
-    video: "/v1.mp4",
-    department: "Primary Press Sector",
-    title: "High-Speed Rotary Apparel Care Tag Lines",
-    description: "Our high-speed rotary printing system operates continuously to supply luxury garment care cards, woven tags, and double-sided self-adhesive labels for major clothing exporter hubs. Runs up to 120 meters per minute with precision registration control.",
+    id: "offset-printing",
+    video: "/offset.mp4",
+    department: "Offset Press Sector",
+    title: "Offset Press Operations",
+    description: "Our high-performance sheetfed offset press runs continuous high-volume production for premium garment hang tags, custom-designed packaging boxes, and promotional paperboards with micro-calibrated Pantone accuracy.",
     specs: [
-      { label: "Rated Speed", value: "120 m/min" },
-      { label: "Material Input", value: "Satin / Woven" },
-      { label: "Ink Quality", value: "OEKO-TEX Washproof" },
-      { label: "Max Width", value: "220 mm Web" },
+      { label: "Press Capacity", value: "12,000 sheets/hr" },
+      { label: "Paper Weight", value: "170 to 450 gsm" },
+      { label: "Color Calibration", value: "X-Rite Color Bar" },
+      { label: "Finishing Mode", value: "Satin / Matte Coating" },
     ]
   },
   {
-    id: "label-weaving",
-    video: "/v3.mp4",
-    department: "Woven Brand Badges",
-    title: "High-Density Computerized Damask Looms",
-    description: "Computerized jacquard looms interlacing ultra-fine 50D polyester threads to create luxury clothing neck labels, woven size loops, and custom brand patches with extreme graphic detail.",
+    id: "flexo-printing",
+    video: "/labelprinting.mp4",
+    department: "Flexographic Printing",
+    title: "Flexographic Label Printing",
+    description: "Durable roll-form label printing lines producing high-fidelity self-adhesive stickers, barcode rolls, and retail product labels. Features automated inline UV curing and web tension control for absolute registration.",
     specs: [
-      { label: "Thread Count", value: "50 Denier Damask" },
-      { label: "Loom Speed", value: "650 RPM" },
-      { label: "Warp Setup", value: "Fine Polyester Yarns" },
-      { label: "Loom Capacity", value: "12 Ribbons Parallel" },
+      { label: "Production Speed", value: "150 meters/min" },
+      { label: "Color Capacity", value: "Up to 6 Colors UV" },
+      { label: "Substrates", value: "Chromo, PET, PP, Foil" },
+      { label: "Curing System", value: "Inline UV Dryer" },
     ]
   },
   {
-    id: "cutting-sealing",
-    video: "/v4.mp4",
-    department: "Post-Press Finishing",
-    title: "Ultrasonic Label Cutting & End-Folding",
-    description: "State-of-the-art ultrasonic warm-blade cutting systems that trim and seal polyester satin labels. Melts borders instantly to yield soft, smooth, non-scratchy edges for neck contact.",
+    id: "paperboard-cutting",
+    video: "/pbcut.mp4",
+    department: "Post-Press Fabrication",
+    title: "Paperboard Tag Cutting",
+    description: "Automated heavy-duty hydraulic cutters executing clean, burr-free micro-precise edges for hang tags, headers, and cardboard box blanks. Maintains razor-sharp accuracy for high-volume orders.",
     specs: [
-      { label: "Trim Speed", value: "150 labels/min" },
-      { label: "Heat Setting", value: "Micro-Calibrated" },
-      { label: "Accuracy", value: "±0.1 mm Tolerance" },
-      { label: "Fold Option", value: "End-Fold / Loop-Fold" },
+      { label: "Cutting Precision", value: "±0.05 mm Tolerance" },
+      { label: "Clamping Pressure", value: "Automatic Hydraulic" },
+      { label: "Output Volume", value: "15,000 tags/hr" },
+      { label: "Knife System", value: "High-Speed Steel" },
     ]
   },
   {
-    id: "offset-packaging",
-    video: "/v5.mp4",
-    department: "Cardboard Packaging",
-    title: "Ryobi Multi-Color Press & Die-Cutter",
-    description: "Multi-color sheetfed offset presses running high-volume prints for paperboard apparel hang tags, price cards, and custom-designed rigid packaging boxes with Pantone calibration.",
+    id: "label-finishing",
+    video: "/labelfinishing.mp4",
+    department: "Quality Inspection",
+    title: "Label Finishing & Packing",
+    description: "Rigorous post-press finishing line where labels undergo high-speed optical scanning, manual sorting, count validation, and premium moisture-proof batch packaging before final dispatch.",
     specs: [
-      { label: "Press Capacity", value: "10,000 sheets/hr" },
-      { label: "Paper Weight", value: "180 to 450 gsm" },
-      { label: "Registration", value: "Laser-Aligned Spot" },
-      { label: "Finishing Mode", value: "Online Matte Varnish" },
+      { label: "Throughput", value: "50,000 labels/hr" },
+      { label: "Count Accuracy", value: "100% Sensor Verified" },
+      { label: "Sorting Method", value: "Optical & Manual QA" },
+      { label: "Packaging", value: "Moisture-Proof Shrink" },
     ]
   },
   {
-    id: "dtf-transfers",
-    video: "/v6.mp4",
-    department: "Heat Transfer Curing",
-    title: "Vibrant DTF Print & Powder Curing Lines",
-    description: "Industrial Direct-to-Film transfer systems printing elastomeric inks onto PET release films, integrated with automated powder-shake curing lines for flexible washproof transfers.",
+    id: "cut-and-seal",
+    video: "/labelcutsell.jpeg",
+    department: "Label Cut & Seal",
+    title: "Label Cutting & Sealing",
+    description: "Advanced warm-blade ultrasonic cutting and folding machinery that trims woven neck labels and satin care badges, sealing the borders instantly to yield soft, smooth, non-irritating edges.",
     specs: [
-      { label: "Transfer Temp", value: "150°C - 160°C" },
-      { label: "Stretch Limit", value: "High-Elastomer" },
-      { label: "Wash Rating", value: "50+ Home Cycles" },
-      { label: "Resolution", value: "2400 dpi Precision" },
+      { label: "Output Rate", value: "180 labels/min" },
+      { label: "Sealing Method", value: "Ultrasonic Heat Melt" },
+      { label: "Folding Options", value: "End-Fold / Loop-Fold" },
+      { label: "Edge Comfort", value: "Zero-Fray Comfort Edge" },
     ]
   }
 ];
@@ -265,13 +265,24 @@ export default function About() {
   const [lightboxSlide, setLightboxSlide] = useState<number | null>(null);
   const [activeFeedIndex, setActiveFeedIndex] = useState(0);
 
-  // Auto-play interval
+  // Auto-play interval for main slider
   useEffect(() => {
     const timer = setInterval(() => {
       handleNextSlide();
     }, 5000);
     return () => clearInterval(timer);
   }, [activeSlide]);
+
+  // Auto-play for live operations feeds (especially images)
+  useEffect(() => {
+    const isVideo = liveFeeds[activeFeedIndex].video.endsWith(".mp4");
+    if (!isVideo) {
+      const timer = setTimeout(() => {
+        setActiveFeedIndex((prev) => (prev === liveFeeds.length - 1 ? 0 : prev + 1));
+      }, 6000); // 6 seconds auto-play for images
+      return () => clearTimeout(timer);
+    }
+  }, [activeFeedIndex]);
 
   const handlePrevSlide = () => {
     setDirection(-1);
@@ -532,18 +543,29 @@ export default function About() {
                   Live feed: {liveFeeds[activeFeedIndex].department}
                 </div>
 
-                {/* Video Tag (Dynamic Key to force reload and autoplay on slide change) */}
-                <video 
-                  key={liveFeeds[activeFeedIndex].video}
-                  className="w-full h-full object-cover"
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                >
-                  <source src={liveFeeds[activeFeedIndex].video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {/* Video or Image Element (Dynamic Key to force reload on slide change) */}
+                {liveFeeds[activeFeedIndex].video.endsWith(".mp4") ? (
+                  <video 
+                    key={liveFeeds[activeFeedIndex].video}
+                    className="w-full h-full object-cover"
+                    autoPlay 
+                    muted 
+                    playsInline
+                    onEnded={() => {
+                      setActiveFeedIndex((prev) => (prev === liveFeeds.length - 1 ? 0 : prev + 1));
+                    }}
+                  >
+                    <source src={liveFeeds[activeFeedIndex].video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img
+                    key={liveFeeds[activeFeedIndex].video}
+                    src={liveFeeds[activeFeedIndex].video}
+                    alt={liveFeeds[activeFeedIndex].title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
 
                 {/* Overlay Prev/Next Arrow Buttons */}
                 <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 z-20 flex justify-between opacity-0 group-hover/video:opacity-100 transition-opacity duration-300">

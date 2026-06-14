@@ -152,23 +152,23 @@ const workGalleryItems = [
   },
   {
     id: "work-pret",
-    title: "printed tapes",
-    category: "Licensed Brands",
-    description: "rewrite the description for this image",
+    title: "Custom Printed Tapes",
+    category: "Wash Care & Woven",
+    description: "Custom screen-printed branding tapes and cotton ribbons engineered with high-density wash-resistant ink for luxury retail presentations.",
     image: "/gallery-work-pret.png",
   },
   {
     id: "work-cartoons",
-    title: "packaging boxes",
+    title: "Premium Packaging Boxes",
     category: "Licensed Brands",
-    description: "Nickelodeon certified vector graphics, glossy high-saturation spot varnish finish, and back-side pricing structures printed for global youth wear collections.",
+    description: "Custom-printed kraft packaging boxes and corrugated cardboard mailers, featuring eco-friendly single-color branding prints and durable structural designs for secure product shipping.",
     image: "/gallery-work-cartoons.png",
   },
   {
     id: "work-kids",
-    title: "High quality photo tags",
+    title: "High-Quality Photo Tags",
     category: "Licensed Brands",
-    description: "Intricately die-cut shield profiles and cartoon merchandise labels featuring rich glossy seal coats and high-grade safety grommets.",
+    description: "Artistic watercolor-illustrated fashion hang tags with custom typography and dual-layered product information backing, complete with elegant premium string hangers.",
     image: "/gallery-work-kids.png",
   },
   {
@@ -180,16 +180,16 @@ const workGalleryItems = [
   },
   {
     id: "work-decathlon",
-    title: "Professional High-Density Woven Neck Labels",
+    title: "Professional Woven Neck Labels",
     category: "Wash Care & Woven",
-    description: "Professional high-density woven neck labels and multi-language wash instruction ribbons with integrated safety barcodes and Decathlon compliance standards.",
-    image: "/gallery-work-decathlon.jpg",
+    description: "Premium high-density woven neck labels and brand tags featuring high-definition white lettering on soft black textured ribbon with precise folded end-finishes.",
+    image: "/gallery-work-decathlon.png",
   },
   {
     id: "trust-quality",
-    title: "cotton printed tapes",
+    title: "Cotton Printed Tapes",
     category: "Eco & Organic",
-    description: "Our premium white satin and organic cotton labels are fully certified to be 100% free of harmful substances, meeting international safety standards for skin contact in global garment exports.",
+    description: "Custom-printed cotton and grosgrain ribbon tapes with bold graphic text prints, designed for premium garment drawstrings, packaging decorations, and modern brand detailing.",
     image: "/gallery-trust-quality.png",
   },
   {
@@ -401,7 +401,7 @@ export default function Home() {
                   </span>
                 </a>
                 <Link
-                  href="/portfolio"
+                  href="/products"
                   className="inline-flex items-center justify-between gap-4 px-6 py-3.5 bg-transparent hover:bg-sky-50 text-sky-600 border-2 border-sky-600 hover:border-sky-700 font-bold rounded-full transition-all duration-200 text-xs uppercase tracking-widest group min-w-[190px]"
                 >
                   <span>EXPLORE PRODUCTS</span>
