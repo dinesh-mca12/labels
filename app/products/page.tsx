@@ -47,7 +47,7 @@ const productsList = [
     name: "Price Tags",
     title: "Stylish Barcode Price Cards",
     description: "Customized retail price tags engineered with high-accuracy barcodes and point-of-sale layout calibration.",
-    image: "/portfolio-hang-tags.png",
+    image: "/pricetag-1.png",
     icon: Tag,
     color: "from-pink-500/10 to-rose-500/5",
   },
