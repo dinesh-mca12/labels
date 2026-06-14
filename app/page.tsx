@@ -152,7 +152,7 @@ const workGalleryItems = [
   },
   {
     id: "work-pret",
-    title: "Unique pvc tags",
+    title: "printed tapes",
     category: "Licensed Brands",
     description: "rewrite the description for this image",
     image: "/gallery-work-pret.png",
@@ -187,14 +187,14 @@ const workGalleryItems = [
   },
   {
     id: "trust-quality",
-    title: "Oeko-Tex® Standard 100 Certification",
+    title: "cotton printed tapes",
     category: "Eco & Organic",
     description: "Our premium white satin and organic cotton labels are fully certified to be 100% free of harmful substances, meeting international safety standards for skin contact in global garment exports.",
     image: "/gallery-trust-quality.png",
   },
   {
     id: "trust-satisfaction",
-    title: "FSC® & ISO 9001:2015 Standards",
+    title: "FSC® Standards",
     category: "Eco & Organic",
     description: "Crafted in Tiruppur using 100% sustainable paperboard and manufactured under certified ISO 9001 quality audits, ensuring absolute compliance and traceability for export brands.",
     image: "/gallery-trust-satisfaction.png",
