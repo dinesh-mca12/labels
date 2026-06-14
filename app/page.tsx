@@ -159,14 +159,14 @@ const workGalleryItems = [
   },
   {
     id: "work-cartoons",
-    title: "Glossy High-Saturation Spot Varnish Finish",
+    title: "packaging boxes",
     category: "Licensed Brands",
     description: "Nickelodeon certified vector graphics, glossy high-saturation spot varnish finish, and back-side pricing structures printed for global youth wear collections.",
     image: "/gallery-work-cartoons.png",
   },
   {
     id: "work-kids",
-    title: "Labels Featuring Rich Glossy Seal Coats",
+    title: "High quality photo tags",
     category: "Licensed Brands",
     description: "Intricately die-cut shield profiles and cartoon merchandise labels featuring rich glossy seal coats and high-grade safety grommets.",
     image: "/gallery-work-kids.png",
