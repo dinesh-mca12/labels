@@ -138,23 +138,23 @@ const testimonials = [
 const workGalleryItems = [
   {
     id: "work-minymo",
-    title: "Organic Cotton Board Tag",
+    title: "Organic Paper Board",
     category: "Eco & Organic",
     description: "FSC-certified biodegradable raw board tag with customized debossed brand printing and organic cotton hanger threads, fabricated for sustainable Scandinavian export fashion.",
     image: "/gallery-work-minymo.png",
   },
   {
     id: "work-brands",
-    title: "Premium Die-Cut Paperboard Tags",
+    title: "Premium Die-Cut Paperboard",
     category: "Licensed Brands",
     description: "Premium die-cut paperboard tags displaying high-fidelity Pantone color consistency, soft-touch matte lamination, and integrated security barcodes.",
     image: "/gallery-work-brands.png",
   },
   {
     id: "work-pret",
-    title: "Sports Club Tags & Unique Bottle-Shaped",
+    title: "Unique pvc tags",
     category: "Licensed Brands",
-    description: "Licensed sports club tags and unique bottle-shaped Pret 100% recycled fabric certifications, made under stringent anti-counterfeit print controls.",
+    description: "rewrite the description for this image",
     image: "/gallery-work-pret.png",
   },
   {
@@ -475,6 +475,15 @@ export default function Home() {
                   <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky-500 to-indigo-600" />
 
                   <div className="space-y-4">
+                    {/* Visual Slide Image for all devices */}
+                    <div className="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/50 shadow-inner relative isolate">
+                      <img
+                        src={heroSlides[activeSlide].image}
+                        alt={heroSlides[activeSlide].title}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    </div>
+
                     <div className="flex justify-between items-center">
                       <span className="text-[10px] font-black text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full uppercase tracking-wider">
                         {`STAGE 0${activeSlide + 1}`}
@@ -511,7 +520,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="w-full bg-sky-600 rounded-3xl p-6 md:py-8 md:px-8 text-white shadow-xl shadow-sky-950/15 relative z-20 mt-8 border border-sky-700/30"
           >
-            <div className="flex flex-col md:flex-row items-stretch justify-between gap-6 md:gap-0">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-row items-stretch justify-between gap-6 md:gap-0">
               {[
                 { icon: ShieldCheck, value: "15+", label: "Years of Excellence" },
                 { icon: Printer, value: "25M+", label: "Labels Printed" },
@@ -522,7 +531,7 @@ export default function Home() {
                 <div
                   key={idx}
                   className={`flex items-center gap-4 flex-1 justify-center md:justify-start ${idx > 0 ? "md:border-l md:border-white/20 md:pl-6 lg:pl-10" : ""
-                    } ${idx > 0 ? "border-t border-white/10 pt-4 md:border-t-0 md:pt-0" : ""}`}
+                    } ${idx === 4 ? "col-span-2 sm:col-span-1" : ""}`}
                 >
                   <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center shrink-0">
                     <stat.icon className="w-6 h-6 text-white stroke-[1.5]" />
@@ -545,7 +554,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-3 mt-8 relative z-20 pb-4"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-10 gap-3 mt-8 relative z-20 pb-4"
           >
             {[
               {
@@ -652,8 +661,8 @@ export default function Home() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 border cursor-pointer ${activeCategory === cat
-                    ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-950/10 scale-105"
-                    : "bg-white/80 backdrop-blur-md border-slate-200 text-slate-650 hover:bg-slate-50 hover:border-slate-350"
+                  ? "bg-slate-900 border-slate-900 text-white shadow-lg shadow-slate-950/10 scale-105"
+                  : "bg-white/80 backdrop-blur-md border-slate-200 text-slate-650 hover:bg-slate-50 hover:border-slate-350"
                   }`}
               >
                 {cat}
@@ -683,7 +692,7 @@ export default function Home() {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover scale-[1.2] group-hover:scale-[1.28] transition-transform duration-500 ease-out origin-center"
+                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500 ease-out origin-center"
                     />
                     <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                       <div className="w-10 h-10 rounded-full bg-white/95 backdrop-blur-md text-slate-800 flex items-center justify-center shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -957,9 +966,8 @@ export default function Home() {
                 <span className="absolute top-0 bottom-0 w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
               </motion.div>
             </div>
-
             {/* Vertical Timeline Connector Path for Mobile & Tablet */}
-            <div className="lg:hidden absolute top-10 bottom-10 left-[42px] sm:left-12 w-[3px] bg-slate-200/80 -z-10 rounded-full overflow-hidden">
+            <div className="lg:hidden absolute top-10 bottom-10 left-[22.5px] w-[3px] bg-slate-200/80 -z-10 rounded-full overflow-hidden">
               <motion.div
                 initial={{ height: 0 }}
                 whileInView={{ height: "100%" }}
@@ -970,7 +978,7 @@ export default function Home() {
             </div>
 
             {/* Grid of Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-6 items-stretch relative">
+            <div className="flex flex-col lg:grid lg:grid-cols-5 gap-8 lg:gap-6 items-stretch relative">
               {workflowSteps.map((step, idx) => {
                 const IconComp = step.icon;
                 const isCenter = idx === 2; // Precision Production center feature card
@@ -982,86 +990,94 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.15 }}
-                    className={`group relative flex flex-col justify-between p-8 sm:p-9 bg-white/95 backdrop-blur-md rounded-[32px] border ${isCenter
-                        ? "border-sky-400/35 shadow-xl shadow-sky-900/5 lg:scale-[1.05] lg:z-20 bg-gradient-to-b from-white to-sky-50/10"
-                        : "border-slate-200/50 shadow-[0_8px_30px_rgba(0,0,0,0.015)]"
-                      } hover:-translate-y-3 hover:border-sky-300/60 hover:shadow-2xl hover:shadow-sky-100/40 transition-all duration-500`}
+                    className={`relative pl-14 sm:pl-16 lg:pl-0 pb-0 flex flex-col justify-between group`}
                   >
-
-                    {/* Layered Card Background Enhancements */}
-                    {/* Step 1: Technical Consultation specifications sheet blueprint details */}
-                    {idx === 0 && (
-                      <div className="absolute right-6 bottom-6 opacity-[0.04] pointer-events-none select-none text-[8px] font-mono text-slate-800 leading-normal border border-slate-400 p-2 rounded max-w-[120px]">
-                        <span className="block border-b border-slate-350 pb-1 font-bold">SPECIFICATIONS</span>
-                        <span className="block pt-1">DIM: 15mm x 60mm</span>
-                        <span className="block">YARN: 50D Damask</span>
-                        <span className="block">QTY: 100,000 Pcs</span>
-                        <span className="block">ALIGN: Center-Fold</span>
-                      </div>
-                    )}
-
-                    {/* Step 2: CMYK bars */}
-                    {idx === 1 && (
-                      <div className="absolute right-6 bottom-6 flex gap-1 opacity-20 pointer-events-none select-none">
-                        <span className="w-2.5 h-6 bg-cyan-400 rounded-sm" />
-                        <span className="w-2.5 h-6 bg-fuchsia-500 rounded-sm" />
-                        <span className="w-2.5 h-6 bg-amber-400 rounded-sm" />
-                        <span className="w-2.5 h-6 bg-slate-900 rounded-sm" />
-                      </div>
-                    )}
-
-                    {/* Step 3: Spinning gears / machinery loop */}
-                    {idx === 2 && (
-                      <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full border border-sky-300/10 opacity-30 flex items-center justify-center pointer-events-none">
-                        <Cpu className="w-12 h-12 text-sky-400/30 animate-[spin_10s_linear_infinite]" />
-                      </div>
-                    )}
-
-                    {/* Step 4: Magnifying checking grids */}
-                    {idx === 3 && (
-                      <div className="absolute right-6 bottom-6 w-12 h-12 rounded-full border-2 border-dashed border-emerald-400/20 flex items-center justify-center pointer-events-none select-none opacity-40">
-                        <span className="text-[9px] font-bold text-emerald-500/50">[100%]</span>
-                      </div>
-                    )}
-
-                    {/* Step 5: Logistics lines */}
-                    {idx === 4 && (
-                      <div className="absolute right-6 bottom-6 opacity-[0.25] pointer-events-none select-none text-[8px] font-mono text-slate-400 text-right">
-                        <span className="block">TIRUPPUR Γ₧í∩╕Å</span>
-                        <span className="block">MUMBAI Γ₧í∩╕Å</span>
-                        <span className="block text-sky-600 font-bold">GLOBAL DEPOT</span>
-                      </div>
-                    )}
-
-                    <div>
-                      {/* Floating Number Badge & Outlined Circle Icon Box */}
-                      <div className="flex items-center justify-between mb-8">
-                        <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:rotate-6">
-                          <IconComp size={20} className="stroke-[2.2]" />
-                        </div>
-                        <div className={`text-sm font-black px-3 py-1 rounded-full ${isCenter
-                            ? "bg-sky-600 text-white shadow-md shadow-sky-100 animate-pulse"
-                            : "bg-slate-100 text-slate-500"
-                          } tracking-wide`}>
-                          {step.num}
-                        </div>
-                      </div>
-
-                      {/* Content block */}
-                      <div className="space-y-3">
-                        <h3 className="text-[17px] sm:text-[18px] font-black text-slate-850 group-hover:text-sky-600 transition-colors leading-snug">
-                          {step.title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
-                          {step.desc}
-                        </p>
+                    {/* Timeline icon node */}
+                    <div className="absolute left-0 top-0 lg:static lg:flex lg:items-center lg:justify-between lg:mb-8 z-10">
+                      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:rotate-6">
+                        <IconComp size={20} className="stroke-[2.2]" />
                       </div>
                     </div>
 
-                    {/* Subtle micro footer active/indicator */}
-                    <div className="pt-6 mt-6 border-t border-slate-100/60 flex items-center justify-between text-[9px] text-slate-400 font-bold uppercase tracking-wider relative z-10">
-                      <span>{isCenter ? "Primary Hub" : "Workflow Flow"}</span>
-                      <span className={`h-2 w-2 rounded-full ${isCenter ? "bg-sky-500 animate-ping" : "bg-slate-300"}`}></span>
+                    {/* Card content */}
+                    <div className={`p-6 sm:p-8 bg-white/95 backdrop-blur-md rounded-[24px] sm:rounded-[32px] border ${isCenter
+                      ? "border-sky-400/35 shadow-xl shadow-sky-900/5 lg:scale-[1.05] lg:z-20 bg-gradient-to-b from-white to-sky-50/10"
+                      : "border-slate-200/50 shadow-[0_8px_30px_rgba(0,0,0,0.015)]"
+                      } hover:-translate-y-1 lg:hover:-translate-y-3 hover:border-sky-300/60 hover:shadow-2xl hover:shadow-sky-100/40 transition-all duration-500 flex flex-col justify-between flex-grow relative`}
+                    >
+                      {/* Layered Card Background Enhancements */}
+                      {/* Step 1: Technical Consultation specifications sheet blueprint details */}
+                      {idx === 0 && (
+                        <div className="absolute right-6 bottom-6 opacity-[0.04] pointer-events-none select-none text-[8px] font-mono text-slate-800 leading-normal border border-slate-400 p-2 rounded max-w-[120px]">
+                          <span className="block border-b border-slate-350 pb-1 font-bold">SPECIFICATIONS</span>
+                          <span className="block pt-1">DIM: 15mm x 60mm</span>
+                          <span className="block">YARN: 50D Damask</span>
+                          <span className="block">QTY: 100,000 Pcs</span>
+                          <span className="block">ALIGN: Center-Fold</span>
+                        </div>
+                      )}
+
+                      {/* Step 2: CMYK bars */}
+                      {idx === 1 && (
+                        <div className="absolute right-6 bottom-6 flex gap-1 opacity-20 pointer-events-none select-none">
+                          <span className="w-2.5 h-6 bg-cyan-400 rounded-sm" />
+                          <span className="w-2.5 h-6 bg-fuchsia-500 rounded-sm" />
+                          <span className="w-2.5 h-6 bg-amber-400 rounded-sm" />
+                          <span className="w-2.5 h-6 bg-slate-900 rounded-sm" />
+                        </div>
+                      )}
+
+                      {/* Step 3: Spinning gears / machinery loop */}
+                      {idx === 2 && (
+                        <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full border border-sky-300/10 opacity-30 flex items-center justify-center pointer-events-none">
+                          <Cpu className="w-12 h-12 text-sky-400/30 animate-[spin_10s_linear_infinite]" />
+                        </div>
+                      )}
+
+                      {/* Step 4: Magnifying checking grids */}
+                      {idx === 3 && (
+                        <div className="absolute right-6 bottom-6 w-12 h-12 rounded-full border-2 border-dashed border-emerald-400/20 flex items-center justify-center pointer-events-none select-none opacity-40">
+                          <span className="text-[9px] font-bold text-emerald-500/50">[100%]</span>
+                        </div>
+                      )}
+
+                      {/* Step 5: Logistics lines */}
+                      {idx === 4 && (
+                        <div className="absolute right-6 bottom-6 opacity-[0.25] pointer-events-none select-none text-[8px] font-mono text-slate-400 text-right">
+                          <span className="block">TIRUPPUR ➔</span>
+                          <span className="block">MUMBAI ➔</span>
+                          <span className="block text-sky-600 font-bold">GLOBAL DEPOT</span>
+                        </div>
+                      )}
+
+                      <div>
+                        {/* Floating Number Badge */}
+                        <div className="flex justify-end mb-4 lg:mb-8">
+                          <div className={`text-xs font-black px-2.5 py-1 rounded-full ${isCenter
+                            ? "bg-sky-600 text-white shadow-md shadow-sky-100 animate-pulse"
+                            : "bg-slate-100 text-slate-500"
+                            } tracking-wide`}>
+                            {step.num}
+                          </div>
+                        </div>
+
+                        {/* Content block */}
+                        <div className="space-y-3">
+                          <h3 className="text-[17px] sm:text-[18px] font-black text-slate-850 group-hover:text-sky-600 transition-colors leading-snug">
+                            {step.title}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
+                            {step.desc}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Subtle micro footer active/indicator */}
+                      <div className="pt-6 mt-6 border-t border-slate-100/60 flex items-center justify-between text-[9px] text-slate-400 font-bold uppercase tracking-wider relative z-10">
+                        <span>{isCenter ? "Primary Hub" : "Workflow Flow"}</span>
+                        <span className={`h-2 w-2 rounded-full ${isCenter ? "bg-sky-500 animate-ping" : "bg-slate-300"}`}></span>
+                      </div>
+
                     </div>
 
                   </motion.div>

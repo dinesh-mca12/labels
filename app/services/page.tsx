@@ -194,7 +194,7 @@ export default function Services() {
               >
                 {/* Visual Widget Column */}
                 <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"} relative`}>
-                  <Link href={srvLink} className="aspect-square w-full max-w-sm mx-auto rounded-3xl p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-200/20 cursor-pointer block">
+                  <Link href={srvLink} className="aspect-square w-full max-w-sm mx-auto rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group border border-slate-200/20 cursor-pointer block">
                     {/* Background Service Image with hover zoom */}
                     <div 
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105 z-0"
@@ -209,7 +209,7 @@ export default function Services() {
                     </div>
 
                     {/* Active Status Badge with premium soft blur styling */}
-                    <div className="my-auto text-center space-y-1.5 py-5 relative z-20 bg-slate-950/40 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg max-w-[200px] mx-auto w-full transition-all duration-500 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none">
+                    <div className="my-auto text-center space-y-1.5 py-3 sm:py-5 relative z-20 bg-slate-950/40 backdrop-blur-sm border border-white/10 rounded-2xl shadow-lg max-w-[200px] mx-auto w-full transition-all duration-500 group-hover:opacity-0 group-hover:scale-95 group-hover:pointer-events-none">
                       <span className="block text-[10px] font-bold text-sky-300 uppercase tracking-widest">Department Active</span>
                       <span className="text-[9px] text-slate-200 block font-bold uppercase tracking-wider">Calibrated Daily</span>
                     </div>

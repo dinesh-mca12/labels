@@ -418,7 +418,7 @@ export default function Portfolio() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-[30px] border border-slate-150 overflow-hidden shadow-2xl max-w-2xl w-full p-6 relative flex flex-col justify-between"
+              className="bg-white rounded-[30px] border border-slate-150 shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative flex flex-col justify-between"
             >
               <button
                 onClick={() => setLightboxItem(null)}

@@ -634,7 +634,7 @@ export default function About() {
           </div>
 
           {/* Department Thumbnail Selector Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 max-w-5xl mx-auto pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-5xl mx-auto pt-2">
             {liveFeeds.map((feed, index) => {
               const isActive = index === activeFeedIndex;
               return (
